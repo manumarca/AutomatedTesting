@@ -5,10 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Events;
+using OpenQA.Selenium.IE;
 using NUnit.Framework;
 using System.Configuration;
 using AutomatedTesting.Actions;
 using ObjectLibrary.Shared;
+using OpenQA.Selenium.Support.UI;
+using System.Threading;
 
 namespace AutomatedTesting
 {
@@ -27,19 +30,21 @@ namespace AutomatedTesting
             //Gets Login Class
             LoginActions login = new LoginActions();
             //Logs In 
-            login.Login();
+            login.EnterUser();
+            login.EnterPassword();
+            login.ClickOnSignIn();
         }
 
         [Test]
         public void ExecuteTest()
         {
-                        
+
+            
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-
             BrowserActions.CloseBrowser();
         }
 

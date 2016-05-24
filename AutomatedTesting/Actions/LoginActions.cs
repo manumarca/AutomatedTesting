@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ObjectLibrary.Pages.LogIn;
 using System.Configuration;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium;
 
 namespace AutomatedTesting.Actions
 {

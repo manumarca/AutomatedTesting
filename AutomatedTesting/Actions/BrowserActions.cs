@@ -8,6 +8,8 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Opera;
+using OpenQA.Selenium.Safari;
 using System.Configuration;
 using ObjectLibrary.Shared;
 using OpenQA.Selenium.Remote;
@@ -32,6 +34,12 @@ namespace AutomatedTesting.Actions
                     break;
                 case "Edge":
                     WebDriver.Driver = new EdgeDriver();
+                    break;
+                case "Opera":
+                    WebDriver.Driver = new OperaDriver();
+                    break;
+                case "Safari":
+                    WebDriver.Driver = new SafariDriver();
                     break;
             }
         }
