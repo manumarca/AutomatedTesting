@@ -25,8 +25,7 @@ namespace AutomatedTesting.Actions
                     WebDriver.Driver = new FirefoxDriver();
                     break;
                 case "Chrome":
-                    WebDriver.Driver = new ChromeDriver();
-
+                    WebDriver.Driver = new ChromeDriver();  
                     break;
                 case "Internet Explorer":
                     WebDriver.Driver = new InternetExplorerDriver();
