@@ -19,7 +19,6 @@ namespace AutomatedTesting.Actions
         public static void SetBrowser()
         {
             var config = ConfigurationSettings.AppSettings;
-            WebDriver.Driver driver;
             switch (config["Browser"])
             {
                 case "Firefox":
@@ -27,10 +26,10 @@ namespace AutomatedTesting.Actions
                     break;
                 case "Chrome":
                     WebDriver.Driver = new ChromeDriver();
-                    
+
                     break;
                 case "Internet Explorer":
-                     driver = new InternetExplorerDriver();
+                    WebDriver.Driver = new InternetExplorerDriver();
                     break;
                 case "Edge":
                     WebDriver.Driver = new EdgeDriver();
@@ -47,5 +46,5 @@ namespace AutomatedTesting.Actions
         {
             WebDriver.Driver.Navigate().GoToUrl(url);
         }
-
+    }
 }
