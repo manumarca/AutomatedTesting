@@ -3,15 +3,16 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
+using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Support;
 using NUnit.Framework;
-using System.Configuration;
 using AutomatedTesting.Actions;
 using ObjectLibrary.Shared;
-using OpenQA.Selenium.Support.UI;
-using System.Threading;
 
 namespace AutomatedTesting
 {
@@ -38,8 +39,11 @@ namespace AutomatedTesting
         [Test]
         public void ExecuteTest()
         {
+            WebDriverWait wait = new WebDriverWait(WebDriver.Driver, TimeSpan.FromSeconds(10));
+            wait.Until(ExpectedConditions.ElementExists(By.Id("ext-gen1089")));
+            Thread.Sleep(5000);
 
-            
+
         }
 
         [TearDown]

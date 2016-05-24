@@ -38,7 +38,8 @@ namespace AutomatedTesting.Actions
 
         public void ClickOnSignIn()
         {
-
+            
+            loginPage.LogInButton.SendKeys(Keys.Enter);
         }
 
 

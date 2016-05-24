@@ -22,7 +22,7 @@ namespace ObjectLibrary.Pages.LogIn
         [FindsBy(How = How.Id, Using = "Password")]
         public IWebElement PassWord { get; set; }
 
-        //[FindsBy(How = How.)]
-        //public IWebElement LogInButton { get; set; }
+        [FindsBy(How = How.XPath, Using = "/html/body/div/form/div/div[2]/div/div[5]/div[4]/div/input")]
+        public IWebElement LogInButton { get; set; }
     }
 }
