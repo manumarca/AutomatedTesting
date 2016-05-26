@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ObjectLibrary.Pages.LogIn;
+using ObjectLibrary.Shared;
 using System.Configuration;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
-namespace AutomatedTesting.Actions
+
+namespace AutomatedTesting.InternalActions
 {
     public class LoginActions
     {
@@ -38,8 +41,8 @@ namespace AutomatedTesting.Actions
 
         public void ClickOnSignIn()
         {
-            
-            loginPage.LogInButton.SendKeys(Keys.Enter);
+            Actions act = new Actions(WebDriver.Driver);
+            act.MoveToElement(loginPage.LogInButton).Click().Build().Perform();
         }
 
 

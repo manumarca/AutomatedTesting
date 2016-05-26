@@ -14,7 +14,7 @@ using System.Configuration;
 using ObjectLibrary.Shared;
 using OpenQA.Selenium.Remote;
 
-namespace AutomatedTesting.Actions
+namespace AutomatedTesting.InternalActions
 {
     public static class BrowserActions
     {

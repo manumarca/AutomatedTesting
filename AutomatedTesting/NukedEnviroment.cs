@@ -12,7 +12,7 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Opera;
 using NUnit.Framework;
-using AutomatedTesting.Actions;
+using AutomatedTesting.InternalActions;
 using ObjectLibrary.Shared;
 using OpenQA.Selenium.Remote;
 namespace AutomatedTesting
@@ -49,6 +49,7 @@ namespace AutomatedTesting
         [TearDown]
         public void TestCleanUp()
         {
+
             BrowserActions.CloseBrowser();
         }
 
