@@ -36,7 +36,9 @@ namespace AutomatedTesting.Actions
                     WebDriver.Driver = new EdgeDriver();
                     break;
                 case "Opera":
-                    WebDriver.Driver = new OperaDriver();
+                    OperaOptions option = new OperaOptions();
+                    option.BinaryLocation = @"C:\Users\Manuel Marcatili\Documents\Visual Studio 2013\Projects\AutomatedTesting\packages\operadriver_win64";
+                    WebDriver.Driver = new OperaDriver(option.BinaryLocation);
                     break;
                 case "Safari":
                     WebDriver.Driver = new SafariDriver();

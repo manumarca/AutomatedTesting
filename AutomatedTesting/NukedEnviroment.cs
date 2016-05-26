@@ -10,10 +10,11 @@ using OpenQA.Selenium.Support.Events;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support;
+using OpenQA.Selenium.Opera;
 using NUnit.Framework;
 using AutomatedTesting.Actions;
 using ObjectLibrary.Shared;
-
+using OpenQA.Selenium.Remote;
 namespace AutomatedTesting
 {
     class NukedEnviroment
@@ -39,10 +40,9 @@ namespace AutomatedTesting
         [Test]
         public void ExecuteTest()
         {
+
             WebDriverWait wait = new WebDriverWait(WebDriver.Driver, TimeSpan.FromSeconds(10));
             wait.Until(ExpectedConditions.ElementExists(By.Id("ext-gen1089")));
-            Thread.Sleep(5000);
-
 
         }
 

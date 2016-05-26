@@ -9,8 +9,6 @@ namespace ObjectLibrary.Shared
 {
     public static class WebDriver
     {
-        public static IWebDriver Driver { get; set; }
-
-        
+        public static IWebDriver Driver { get; set; }        
     }
 }
