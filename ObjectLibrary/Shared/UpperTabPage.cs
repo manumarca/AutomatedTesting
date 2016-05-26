@@ -17,7 +17,7 @@ namespace ObjectLibrary.Shared
         [FindsBy(How = How.Id, Using = "user_details_container")]
         public IWebElement UserDetailsIcon{get;set;}
 
-        [FindsBy(How = How.Id, Using = "Password")]
+        [FindsBy(How = How.ClassName, Using = "logout-link")]
         public IWebElement PassWord { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//input[@type='submit']")]

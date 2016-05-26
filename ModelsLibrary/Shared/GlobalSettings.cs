@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ModelsLibrary.Shared
 {
-    public class DataEnvironment
+    public class GlobalSettings
     {
-        
+        public string Browser;
+        public string Enviroment;
+        public string User;
+        public string Password;
     }
 }

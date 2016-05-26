@@ -12,6 +12,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using Repositories.cs;
 
 
 namespace AutomatedTesting.InternalActions
@@ -19,6 +20,7 @@ namespace AutomatedTesting.InternalActions
     public class LoginActions
     {
         LoginPage loginPage = new LoginPage();
+        
 
         public void Login()
         {

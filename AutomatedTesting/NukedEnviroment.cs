@@ -15,6 +15,8 @@ using NUnit.Framework;
 using AutomatedTesting.InternalActions;
 using ObjectLibrary.Shared;
 using OpenQA.Selenium.Remote;
+using Repositories.cs;
+
 namespace AutomatedTesting
 {
     class NukedEnviroment
@@ -23,34 +25,42 @@ namespace AutomatedTesting
         [SetUp]
         public void Initialize()
         {
-            //Set Basic XML 
-            var config = ConfigurationSettings.AppSettings;
-            //Set which browser is going to run
-            BrowserActions.SetBrowser();
-            //Goes to Intelligize
-            BrowserActions.GoToUrl(config["Enviroment"]);
-            //Gets Login Class
-            LoginActions login = new LoginActions();
-            //Logs In 
-            login.EnterUser();
-            login.EnterPassword();
-            login.ClickOnSignIn();
+            ////Set Basic XML 
+            //var config = ConfigurationSettings.AppSettings;
+            ////Set which browser is going to run
+            //BrowserActions.SetBrowser();
+            ////Goes to Intelligize
+            //BrowserActions.GoToUrl(config["Enviroment"]);
+            ////Gets Login Class
+            //LoginActions login = new LoginActions();
+            ////Logs In 
+            //login.Login();
         }
 
         [Test]
         public void ExecuteTest()
         {
+            GSheetHelper gsHelper = new GSheetHelper();
 
-            WebDriverWait wait = new WebDriverWait(WebDriver.Driver, TimeSpan.FromSeconds(10));
-            wait.Until(ExpectedConditions.ElementExists(By.Id("ext-gen1089")));
+            gsHelper.Authenticate();
+            gsHelper.SelectSpreadSheet("abc");
+
+            //UnitOfWork unitOfWork = new UnitOfWork();
+            //var list = unitOfWork.ResourceRepository.GetList();
+            //foreach (var value in list)
+            //{
+            //    Console.WriteLine(value);
+            //}
+            //WebDriverWait wait = new WebDriverWait(WebDriver.Driver, TimeSpan.FromSeconds(10));
+            //wait.Until(ExpectedConditions.ElementExists(By.Id("ext-gen1089")));
+            
 
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-
-            BrowserActions.CloseBrowser();
+                        //BrowserActions.CloseBrowser();
         }
 
         static void Main() { }
