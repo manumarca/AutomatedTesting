@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\LogIn\LoginPage.cs" />
+    <Compile Include="Pages\PageObjectHelper.cs" />
     <Compile Include="Pages\SecFilingsPages\SearchOptionsTab.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\UpperTabPage.cs" />
@@ -60,6 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModelsLibrary\ModelsLibrary.csproj">
+      <Project>{daa29156-ca55-45d6-8e75-9f064f04f9b9}</Project>
+      <Name>ModelsLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

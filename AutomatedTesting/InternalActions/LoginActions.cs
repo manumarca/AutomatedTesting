@@ -26,7 +26,7 @@ namespace AutomatedTesting.InternalActions
             EnterPassword();
             ClickOnSignIn();
         }
-
+        
         public void EnterUser()
         {
             var config = ConfigurationSettings.AppSettings;
@@ -44,8 +44,5 @@ namespace AutomatedTesting.InternalActions
             Actions act = new Actions(WebDriver.Driver);
             act.MoveToElement(loginPage.LogInButton).Click().Build().Perform();
         }
-
-
-
     }
 }

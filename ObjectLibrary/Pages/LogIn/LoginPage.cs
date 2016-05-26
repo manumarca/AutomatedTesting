@@ -17,7 +17,7 @@ namespace ObjectLibrary.Pages.LogIn
         }
 
         [FindsBy(How = How.Id, Using = "UserName")]
-        public IWebElement UserName{get;set;}
+        public IWebElement UserName{ get; set; }
 
         [FindsBy(How = How.Id, Using = "Password")]
         public IWebElement PassWord { get; set; }
