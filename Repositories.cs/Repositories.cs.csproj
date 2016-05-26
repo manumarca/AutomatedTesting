@@ -134,6 +134,10 @@
       <Project>{daa29156-ca55-45d6-8e75-9f064f04f9b9}</Project>
       <Name>ModelsLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ObjectLibrary\ObjectLibrary.csproj">
+      <Project>{d8b3a715-4e52-4923-a2eb-efbc0c6eecff}</Project>
+      <Name>ObjectLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

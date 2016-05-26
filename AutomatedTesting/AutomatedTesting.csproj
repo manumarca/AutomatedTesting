@@ -110,6 +110,7 @@
     <Compile Include="GSheetHelper.cs" />
     <Compile Include="InternalActions\BrowserActions.cs" />
     <Compile Include="InternalActions\LoginActions.cs" />
+    <Compile Include="InternalActions\LogoutActions.cs" />
     <Compile Include="NukedEnviroment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -53,14 +53,16 @@ namespace AutomatedTesting
             //}
             //WebDriverWait wait = new WebDriverWait(WebDriver.Driver, TimeSpan.FromSeconds(10));
             //wait.Until(ExpectedConditions.ElementExists(By.Id("ext-gen1089")));
-            
+
 
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-                        //BrowserActions.CloseBrowser();
+            LogoutActions.LogOut();
+            Thread.Sleep(5000);
+            BrowserActions.CloseBrowser();
         }
 
         static void Main() { }
