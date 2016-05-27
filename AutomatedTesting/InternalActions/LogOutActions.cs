@@ -13,7 +13,7 @@ namespace AutomatedTesting.InternalActions
 {
     public class LogoutActions
     {
-        private static UpperTabPage ut= new UpperTabPage();
+        private static UpperTabPage ut = new UpperTabPage();
 
         public void LogOut ()
         {
@@ -32,7 +32,7 @@ namespace AutomatedTesting.InternalActions
         public void ClickLogOut()
         {
             ut.logoutLink.FindElementWaitUntilClickable(WebDriver.Driver);
-            ut.UserDetailsIcon.Click();
+            ut.logoutLink.Click();
             
         }
     }

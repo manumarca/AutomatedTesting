@@ -32,7 +32,9 @@ namespace AutomatedTesting.InternalActions
                     Maximize();
                     break;
                 case "Internet Explorer":
-                    WebDriver.Driver = new InternetExplorerDriver();
+                    InternetExplorerOptions ieoptions = new InternetExplorerOptions();
+                    ieoptions.EnableNativeEvents = false;
+                    WebDriver.Driver = new InternetExplorerDriver(ieoptions);
                     Maximize();
                     break;
                 case "Edge":

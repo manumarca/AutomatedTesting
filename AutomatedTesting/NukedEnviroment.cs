@@ -14,6 +14,7 @@ using OpenQA.Selenium.Opera;
 using NUnit.Framework;
 using AutomatedTesting.InternalActions;
 using ObjectLibrary.Shared;
+using ObjectLibrary.Pages.Home;
 using OpenQA.Selenium.Remote;
 using Repositories.cs;
 using Repositories.cs.Helpers;
@@ -22,18 +23,19 @@ namespace AutomatedTesting
 {
     class NukedEnviroment
     {
-    
+
+
+
+        
         [SetUp]
         public void Initialize()
         {
-            //Set Basic XML 
-            var config = ConfigurationSettings.AppSettings;
             //Set which browser is going to run
             BrowserActions.SetBrowser();
-            //Goes to Intelligize
-            BrowserActions.GoToUrl(config["Enviroment"]);
             //Gets Login Class
             LoginActions login = new LoginActions();
+            //Goes to Intelligize
+            BrowserActions.GoToUrl(ConfigurationSettings.AppSettings["Enviroment"]);
             //Logs In 
             login.Login();
         }
@@ -41,14 +43,20 @@ namespace AutomatedTesting
         [Test]
         public void ExecuteTest()
         {
-            LogoutActions logOut = new LogoutActions();
-            logOut.LogOut();
+            HomePage homePage = new HomePage();
+            homePage.FirmMemosLink.Click();
+            WebDriver.Driver.WaitForAjax();
+
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-            
+            //Gets Logout Class
+            LogoutActions logOut = new LogoutActions();
+            //Logs Out from Application
+            logOut.LogOut();
+            //Closes Browser
             BrowserActions.CloseBrowser();
         }
 

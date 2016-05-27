@@ -48,6 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Home\HomePage.cs" />
     <Compile Include="Pages\LogIn\LoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\UpperTabPage.cs" />
