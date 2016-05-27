@@ -57,10 +57,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ModelsLibrary\ModelsLibrary.csproj">
-      <Project>{daa29156-ca55-45d6-8e75-9f064f04f9b9}</Project>
-      <Name>ModelsLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Repositories.cs\Repositories.cs.csproj">
       <Project>{6b9cb49a-2804-4b6b-a7d8-7426bb6d214b}</Project>
       <Name>Repositories.cs</Name>
