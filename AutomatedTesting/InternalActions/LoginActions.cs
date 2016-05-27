@@ -13,6 +13,7 @@ using OpenQA.Selenium.Edge;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using Repositories.cs;
+using Repositories.cs.Helpers;
 
 
 namespace AutomatedTesting.InternalActions
@@ -27,24 +28,21 @@ namespace AutomatedTesting.InternalActions
             EnterUser();
             EnterPassword();
             ClickOnSignIn();
-        }
+            }
         
         public void EnterUser()
         {
-            var config = ConfigurationSettings.AppSettings;
-            loginPage.UserName.SendKeys(config["User"]);
+            loginPage.UserName.SendKeys(ConfigurationSettings.AppSettings["User"]);
         }
 
         public void EnterPassword()
         {
-            var config = ConfigurationSettings.AppSettings;
-            loginPage.PassWord.SendKeys(config["Password"]);
+            loginPage.PassWord.SendKeys(ConfigurationSettings.AppSettings["Password"]);
         }
 
         public void ClickOnSignIn()
         {
-            Actions act = new Actions(WebDriver.Driver);
-            act.MoveToElement(loginPage.LogInButton).Click().Build().Perform();
+            loginPage.LogInButton.JsClick(WebDriver.Driver);
         }
     }
 }
