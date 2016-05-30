@@ -29,14 +29,14 @@ namespace Repositories.cs.Repositories
                     foreach (string propName in listPropData)
                     {
                         var prop = type.GetField(propName);
-                        prop.SetValue(obj, dataHelper.Read(dataHelper.GetColumnbyName(propName) + i));
+                            prop.SetValue(obj, dataHelper.Read(dataHelper.GetColumnbyName(propName) + i));
                     }
                     list.Add((T)obj);
                 }
                 dataHelper.Close();
                 return list;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 dataHelper.Close();
                 throw new Exception("Fail due to: " + e.Message);

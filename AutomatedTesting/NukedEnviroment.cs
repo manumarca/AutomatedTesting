@@ -32,76 +32,61 @@ namespace AutomatedTesting
         [SetUp]
         public void Initialize()
         {
-            //Set which browser is going to run
-            BrowserActions.SetBrowser();
-            //Gets Login Class
-            LoginActions login = new LoginActions();
-            //Goes to Intelligize
-            BrowserActions.GoToUrl(ConfigurationSettings.AppSettings["Enviroment"]);
-            //Logs In 
-            login.Login();
+            ////Set which browser is going to run
+            //BrowserActions.SetBrowser();
+            ////Gets Login Class
+            //LoginActions login = new LoginActions();
+            ////Goes to Intelligize
+            //BrowserActions.GoToUrl(ConfigurationSettings.AppSettings["Enviroment"]);
+            ////Logs In 
+            //login.Login();
         }
 
         [Test]
         public void ExecuteTest()
         {
-            char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-            HomePage homePage = new HomePage();
-            FirmMemosPage fmPage = new FirmMemosPage();
+            
 
-            #region Navigate To Firm Memos
-            //Goes To Firm Memos Page
+            //char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+            //HomePage homePage = new HomePage();
+            //FirmMemosPage fmPage = new FirmMemosPage();
+            
+
+            //#region Navigate To Firm Memos
+            ////Goes To Firm Memos Page
+            //homePage.FirmMemosLink.FindElementWaitUntilClickable(WebDriver.Driver);
             //homePage.FirmMemosLink.Click();
-            //Waits for ajax loading to finish
-            //WebDriver.Driver.WaitForAjax();
-            #endregion
+            ////Waits for ajax loading to finish
+            //WebDriver.Driver.WaitForApplicationLoad();
+            //#endregion
 
+            ////Opens Law Firm Pop Up 
+            //fmPage.LawFirmExpandFilter.FindElementWaitUntilClickable(WebDriver.Driver);
+            //            fmPage.LawFirmExpandFilter.Click();
+            
+            ////Closes Law Firm Pop Up
+            //fmPage.LawFirmCancelFilter.FindElementWaitUntilClickable(WebDriver.Driver);
+            //fmPage.LawFirmCancelFilter.Click();
 
-            //Opens Law Firm Pop Up 
-            fmPage.LawFirmExpandFilter.FindElementWaitUntilClickable(WebDriver.Driver);
-            fmPage.LawFirmExpandFilter.Click();
-            
-            //GetListOfNames
-            IList<IWebElement> lawFirmRows = null;
-            
-            foreach (var letter in alpha)
+            UnitOfWork unitOfWork = new UnitOfWork();
+
+            var rssFeed = unitOfWork.RssFeedRepository.GetList();
+
+            foreach (var rss in rssFeed)
             {
-                fmPage.LawFirmTextBoxFilter.SendKeys(letter.ToString());
-                var aux = fmPage.LawFirmListFilter.GetRowsFromTable();
-                foreach (var inneraux in aux)
-                {
-                    lawFirmRows.Add(inneraux);
-                }
+                Console.WriteLine(rss.Name2);
             }
-                        
-            foreach (var lawFirm in lawFirmRows)
-            {
-                Console.WriteLine(lawFirm.Text);
-            }
-
-
-            //Closes Law Firm Pop Up
-            fmPage.LawFirmCancelFilter.FindElementWaitUntilClickable(WebDriver.Driver);
-            fmPage.LawFirmCancelFilter.Click();
-            
-            homePage.FirmMemosLink.Click();
-            PageObjectHelper.WaitForApplicationLoad(WebDriver.Driver);
-
-
-            fmPage.LawFirmExpandFilter.ScrollIntoView(WebDriver.Driver);
-            fmPage.LawFirmExpandFilter.Click();
-
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-            //Gets Logout Class
-            LogoutActions logOut = new LogoutActions();
-            //Logs Out from Application
-            logOut.LogOut();
-            //Closes Browser
-            BrowserActions.CloseBrowser();
+            ////Gets Logout Class
+            //LogoutActions logOut = new LogoutActions();
+            ////Logs Out from Application
+            //logOut.LogOut();
+            ////Closes Browser
+            //BrowserActions.CloseBrowser();
         }
 
         static void Main() { }
