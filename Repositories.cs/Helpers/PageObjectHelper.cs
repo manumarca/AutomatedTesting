@@ -17,7 +17,6 @@ namespace Repositories.cs.Helpers
         private static TimeSpan timeOut = TimeSpan.FromSeconds(10);
         private static WebDriverWait wait;
         private static IWebElement elementToBeLocated;
-        private static Actions actions;
 
 
         public static IWebElement FindElementWaitUntilExists(By locator, IWebDriver driver)
@@ -71,34 +70,7 @@ namespace Repositories.cs.Helpers
 
         public static IList<IWebElement> GetRowsFromTable(this IWebElement element)
         {
-           return element.FindElements(By.TagName("tr"));
+            return element.FindElements(By.TagName("tr"));
         }
-       
-        
-        public static void WaitForApplicationLoad (IWebDriver driver)
-        {
-            Stopwatch _timer = new Stopwatch();
-            _timer.Start();
-            string loadingScreenId = "loading";
-            bool isLoading = true;
-            IWebElement loadingScreen;
-
-            // Performs a loop until the loading screen disapears and while it take less than 10 seconds to load
-            do
-            {
-                try
-                {
-                    // Searches for the loading screen div
-                    loadingScreen = driver.FindElement(By.Id(loadingScreenId));
-                }
-                catch (NoSuchElementException)
-                {
-                    // Changes it to false if the loadingscreen is not found
-                    isLoading = false;
-                }
-                // do while is going to be repeated until loadingScreen is true and it take less than 10 secs
-            } while (isLoading && _timer.Elapsed < TimeSpan.FromSeconds(10));
-        }
-
     }
 }

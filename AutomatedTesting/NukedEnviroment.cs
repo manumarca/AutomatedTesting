@@ -51,12 +51,12 @@ namespace AutomatedTesting
 
             #region Navigate To Firm Memos
             //Goes To Firm Memos Page
-            //homePage.FirmMemosLink.Click();
+            homePage.FirmMemosLink.Click();
             //Waits for ajax loading to finish
-            //WebDriver.Driver.WaitForAjax();
+            BrowserActions.WaitForApplicationLoad(WebDriver.Driver);
             #endregion
 
-
+            FirmMemosPopup.getListOfLawFirms();
             //Opens Law Firm Pop Up 
             fmPage.LawFirmExpandFilter.FindElementWaitUntilClickable(WebDriver.Driver);
             fmPage.LawFirmExpandFilter.Click();
@@ -85,7 +85,7 @@ namespace AutomatedTesting
             fmPage.LawFirmCancelFilter.Click();
             
             homePage.FirmMemosLink.Click();
-            PageObjectHelper.WaitForApplicationLoad(WebDriver.Driver);
+            BrowserActions.WaitForApplicationLoad(WebDriver.Driver);
             fmPage.LawFirmExpandFilter.Click();
             Thread.Sleep(1000);
 
