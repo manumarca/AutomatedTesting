@@ -49,7 +49,6 @@ namespace AutomatedTesting
             HomePage homePage = new HomePage();
             FirmMemosPage fmPage = new FirmMemosPage();
 
-<<<<<<< HEAD
             #region Navigate To Firm Memos
             //Goes To Firm Memos Page
             //homePage.FirmMemosLink.Click();
@@ -85,14 +84,13 @@ namespace AutomatedTesting
             fmPage.LawFirmCancelFilter.FindElementWaitUntilClickable(WebDriver.Driver);
             fmPage.LawFirmCancelFilter.Click();
             
-=======
             homePage.FirmMemosLink.Click();
             PageObjectHelper.WaitForApplicationLoad(WebDriver.Driver);
 
 
             fmPage.LawFirmExpandFilter.ScrollIntoView(WebDriver.Driver);
             fmPage.LawFirmExpandFilter.Click();
->>>>>>> origin/master
+
         }
 
         [TearDown]
