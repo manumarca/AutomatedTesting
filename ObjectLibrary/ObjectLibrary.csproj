@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\FirmMemosPages\FirmMemosPage.cs" />
+    <Compile Include="Pages\FirmMemosPages\FirmMemosPopup.cs" />
     <Compile Include="Pages\Home\HomePage.cs" />
     <Compile Include="Pages\LogIn\LoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

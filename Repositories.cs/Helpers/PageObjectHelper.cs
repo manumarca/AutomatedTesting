@@ -17,7 +17,6 @@ namespace Repositories.cs.Helpers
         private static TimeSpan timeOut = TimeSpan.FromSeconds(10);
         private static WebDriverWait wait;
         private static IWebElement elementToBeLocated;
-        private static Actions actions;
 
 
         public static IWebElement FindElementWaitUntilExists(By locator, IWebDriver driver)

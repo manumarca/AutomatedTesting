@@ -100,6 +100,5 @@ namespace AutomatedTesting.InternalActions
                 // do while is going to be repeated until loadingScreen is true and it take less than 10 secs
             } while (isLoading && _timer.Elapsed < TimeSpan.FromSeconds(10));
         }
-
     }
 }

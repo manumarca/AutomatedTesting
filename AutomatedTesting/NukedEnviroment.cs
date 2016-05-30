@@ -45,37 +45,41 @@ namespace AutomatedTesting
         [Test]
         public void ExecuteTest()
         {
+
+            #region Navigate To Firm Memos
+            //Goes To Firm Memos Page
+            homePage.FirmMemosLink.Click();
+            //Waits for ajax loading to finish
+            BrowserActions.WaitForApplicationLoad(WebDriver.Driver);
+            #endregion
+
+            FirmMemosPopup.getListOfLawFirms();
+            //Opens Law Firm Pop Up 
+            fmPage.LawFirmExpandFilter.FindElementWaitUntilClickable(WebDriver.Driver);
+            fmPage.LawFirmExpandFilter.Click();
             
-
-            //char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-            //HomePage homePage = new HomePage();
-            //FirmMemosPage fmPage = new FirmMemosPage();
-            
-
-            //#region Navigate To Firm Memos
-            ////Goes To Firm Memos Page
-            //homePage.FirmMemosLink.FindElementWaitUntilClickable(WebDriver.Driver);
-            //homePage.FirmMemosLink.Click();
-            ////Waits for ajax loading to finish
-            //WebDriver.Driver.WaitForApplicationLoad();
-            //#endregion
-
-            ////Opens Law Firm Pop Up 
-            //fmPage.LawFirmExpandFilter.FindElementWaitUntilClickable(WebDriver.Driver);
-            //            fmPage.LawFirmExpandFilter.Click();
-            
-            ////Closes Law Firm Pop Up
-            //fmPage.LawFirmCancelFilter.FindElementWaitUntilClickable(WebDriver.Driver);
-            //fmPage.LawFirmCancelFilter.Click();
-
             UnitOfWork unitOfWork = new UnitOfWork();
-
+            
             var rssFeed = unitOfWork.RssFeedRepository.GetList();
-
+                        
             foreach (var rss in rssFeed)
             {
                 Console.WriteLine(rss.Name2);
             }
+
+
+            //Closes Law Firm Pop Up
+            fmPage.LawFirmCancelFilter.FindElementWaitUntilClickable(WebDriver.Driver);
+            fmPage.LawFirmCancelFilter.Click();
+            
+            homePage.FirmMemosLink.Click();
+            BrowserActions.WaitForApplicationLoad(WebDriver.Driver);
+            fmPage.LawFirmExpandFilter.Click();
+            Thread.Sleep(1000);
+
+            fmPage.LawFirmExpandFilter.ScrollIntoView(WebDriver.Driver);
+            fmPage.LawFirmExpandFilter.Click();
+
         }
 
         [TearDown]
