@@ -19,6 +19,7 @@ using ObjectLibrary.Pages.FirmMemosPages;
 using OpenQA.Selenium.Remote;
 using Repositories.cs;
 using Repositories.cs.Helpers;
+using System.Collections.Generic;
 
 namespace AutomatedTesting
 {
@@ -44,9 +45,47 @@ namespace AutomatedTesting
         [Test]
         public void ExecuteTest()
         {
+            char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
             HomePage homePage = new HomePage();
             FirmMemosPage fmPage = new FirmMemosPage();
-            FirmMemosPopup fmPopup = new FirmMemosPopup();
+
+<<<<<<< HEAD
+            #region Navigate To Firm Memos
+            //Goes To Firm Memos Page
+            //homePage.FirmMemosLink.Click();
+            //Waits for ajax loading to finish
+            //WebDriver.Driver.WaitForAjax();
+            #endregion
+
+
+            //Opens Law Firm Pop Up 
+            fmPage.LawFirmExpandFilter.FindElementWaitUntilClickable(WebDriver.Driver);
+            fmPage.LawFirmExpandFilter.Click();
+            
+            //GetListOfNames
+            IList<IWebElement> lawFirmRows = null;
+            
+            foreach (var letter in alpha)
+            {
+                fmPage.LawFirmTextBoxFilter.SendKeys(letter.ToString());
+                var aux = fmPage.LawFirmListFilter.GetRowsFromTable();
+                foreach (var inneraux in aux)
+                {
+                    lawFirmRows.Add(inneraux);
+                }
+            }
+                        
+            foreach (var lawFirm in lawFirmRows)
+            {
+                Console.WriteLine(lawFirm.Text);
+            }
+
+
+            //Closes Law Firm Pop Up
+            fmPage.LawFirmCancelFilter.FindElementWaitUntilClickable(WebDriver.Driver);
+            fmPage.LawFirmCancelFilter.Click();
+            
+=======
             homePage.FirmMemosLink.Click();
             PageObjectHelper.WaitForApplicationLoad(WebDriver.Driver);
             fmPage.LawFirmExpandFilter.Click();
@@ -54,8 +93,6 @@ namespace AutomatedTesting
 
             fmPage.LawFirmExpandFilter.ScrollIntoView(WebDriver.Driver);
             fmPage.LawFirmExpandFilter.Click();
-            fmPopup.BtnCancel.Click();
-
         }
 
         [TearDown]

@@ -19,5 +19,17 @@ namespace ObjectLibrary.Pages.FirmMemosPages
         [FindsBy(How = How.Id, Using = "ext-gen1132")]
         public IWebElement LawFirmExpandFilter { get; set; }
 
+        [FindsBy(How = How.XPath, Using = ".//*[@id='button-1094-btnIconEl']")]
+        public IWebElement LawFirmCancelFilter { get; set; }
+
+        [FindsBy(How = How.Id, Using = "ext-gen1251")]
+        public IWebElement LawFirmFrameFilter { get; set; }
+
+        [FindsBy(How = How.Id, Using = "ext-comp-1077-body")]
+        public IWebElement LawFirmListFilter { get; set; }
+
+        [FindsBy(How = How.Id, Using = "textfilter-1129-inputEl")]
+        public IWebElement LawFirmTextBoxFilter { get; set; }
+        
     }
 }

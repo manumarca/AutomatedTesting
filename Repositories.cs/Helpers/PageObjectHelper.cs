@@ -68,6 +68,14 @@ namespace Repositories.cs.Helpers
         {
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
         }
+<<<<<<< HEAD
+
+        public static IList<IWebElement> GetRowsFromTable(this IWebElement element)
+        {
+           return element.FindElements(By.TagName("tr"));
+        }
+       
+=======
         
         public static void WaitForApplicationLoad (IWebDriver driver)
         {
@@ -94,5 +102,6 @@ namespace Repositories.cs.Helpers
             } while (isLoading && _timer.Elapsed < TimeSpan.FromSeconds(10));
         }
 
+>>>>>>> origin/master
     }
 }

@@ -68,5 +68,11 @@ namespace AutomatedTesting.InternalActions
         {
             WebDriver.Driver.Navigate().GoToUrl(url);
         }
+
+        public static void SwitchToFrame(IWebElement element)
+        {
+            WebDriver.Driver.SwitchTo().DefaultContent();
+            WebDriver.Driver.SwitchTo().Frame(element);
+        }
     }
 }
