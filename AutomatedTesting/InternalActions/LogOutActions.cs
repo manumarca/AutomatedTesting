@@ -24,9 +24,9 @@ namespace AutomatedTesting.InternalActions
 
         public void ClickUserDetailsIcon()
         {
+            ut.UserDetailsIcon.ResetLayer(WebDriver.Driver);
             ut.UserDetailsIcon.FindElementWaitUntilClickable(WebDriver.Driver);
             ut.UserDetailsIcon.Click();
- 
         }
 
         public void ClickLogOut()

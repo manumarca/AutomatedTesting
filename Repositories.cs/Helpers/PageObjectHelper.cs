@@ -17,6 +17,8 @@ namespace Repositories.cs.Helpers
         private static IWebElement elementToBeLocated;
         private static Actions actions;
 
+
+
         public static IWebElement FindElementWaitUntilExists(By locator, IWebDriver driver)
         {
             wait = new WebDriverWait(driver, timeOut);
@@ -26,6 +28,7 @@ namespace Repositories.cs.Helpers
 
         public static IWebElement FindElementWaitUntilVisible(By locator, IWebDriver driver)
         {
+            driver.SwitchTo().Window(driver.CurrentWindowHandle);
             wait = new WebDriverWait(driver, timeOut);
             return wait.Until(ExpectedConditions.ElementIsVisible(locator));
         }
@@ -54,5 +57,16 @@ namespace Repositories.cs.Helpers
                 throw new Exception("WebDriver timed out waiting for AJAX call to complete");
             }
         }
+
+        public static void ResetLayer(this IWebElement element, IWebDriver driver)
+        {
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(" + element.Location.Y + "," + element.Location.Y + ")");
+        }
+
+        public static void ScrollIntoView(this IWebElement element, IWebDriver driver)
+        {
+            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
+        }
+       
     }
 }

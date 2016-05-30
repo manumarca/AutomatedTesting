@@ -15,6 +15,7 @@ using NUnit.Framework;
 using AutomatedTesting.InternalActions;
 using ObjectLibrary.Shared;
 using ObjectLibrary.Pages.Home;
+using ObjectLibrary.Pages.FirmMemosPages;
 using OpenQA.Selenium.Remote;
 using Repositories.cs;
 using Repositories.cs.Helpers;
@@ -44,9 +45,13 @@ namespace AutomatedTesting
         public void ExecuteTest()
         {
             HomePage homePage = new HomePage();
+            FirmMemosPage fmPage = new FirmMemosPage();
+            
             homePage.FirmMemosLink.Click();
             WebDriver.Driver.WaitForAjax();
-
+            fmPage.LawFirmExpandFilter.ScrollIntoView(WebDriver.Driver);
+            fmPage.LawFirmExpandFilter.Click();
+            
         }
 
         [TearDown]
