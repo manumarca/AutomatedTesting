@@ -30,6 +30,8 @@ namespace AutomatedTesting.InternalActions
         public void EnterUser()
         {
             var config = ConfigurationSettings.AppSettings;
+            Actions act = new Actions(WebDriver.Driver);
+            act.MoveToElement(loginPage.UserName).Click().SendKeys(config["User"]).Build().Perform();
             loginPage.UserName.SendKeys(config["User"]);
         }
 
