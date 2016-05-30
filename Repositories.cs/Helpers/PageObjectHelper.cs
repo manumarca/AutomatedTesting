@@ -1,8 +1,10 @@
-﻿using OpenQA.Selenium;
+﻿using ObjectLibrary.Shared;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -16,7 +18,6 @@ namespace Repositories.cs.Helpers
         private static WebDriverWait wait;
         private static IWebElement elementToBeLocated;
         private static Actions actions;
-
 
 
         public static IWebElement FindElementWaitUntilExists(By locator, IWebDriver driver)
@@ -67,6 +68,31 @@ namespace Repositories.cs.Helpers
         {
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
         }
-       
+        
+        public static void WaitForApplicationLoad (IWebDriver driver)
+        {
+            Stopwatch _timer = new Stopwatch();
+            _timer.Start();
+            string loadingScreenId = "loading";
+            bool isLoading = true;
+            IWebElement loadingScreen;
+
+            // Performs a loop until the loading screen disapears and while it take less than 10 seconds to load
+            do
+            {
+                try
+                {
+                    // Searches for the loading screen div
+                    loadingScreen = driver.FindElement(By.Id(loadingScreenId));
+                }
+                catch (NoSuchElementException)
+                {
+                    // Changes it to false if the loadingscreen is not found
+                    isLoading = false;
+                }
+                // do while is going to be repeated until loadingScreen is true and it take less than 10 secs
+            } while (isLoading && _timer.Elapsed < TimeSpan.FromSeconds(10));
+        }
+
     }
 }

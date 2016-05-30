@@ -19,7 +19,6 @@ namespace AutomatedTesting.InternalActions
         {
             ClickUserDetailsIcon();
             ClickLogOut();
-            
         }
 
         public void ClickUserDetailsIcon()
@@ -33,7 +32,6 @@ namespace AutomatedTesting.InternalActions
         {
             ut.logoutLink.FindElementWaitUntilClickable(WebDriver.Driver);
             ut.logoutLink.Click();
-            
         }
     }
 }

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ObjectLibrary</RootNamespace>
     <AssemblyName>ObjectLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,17 +53,12 @@
     <Compile Include="Pages\Home\HomePage.cs" />
     <Compile Include="Pages\LogIn\LoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\SwitchProducts.cs" />
     <Compile Include="Shared\UpperTabPage.cs" />
     <Compile Include="Shared\WebDriver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Repositories.cs\Repositories.cs.csproj">
-      <Project>{6b9cb49a-2804-4b6b-a7d8-7426bb6d214b}</Project>
-      <Name>Repositories.cs</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\SecFilingsPages\" />

@@ -46,12 +46,13 @@ namespace AutomatedTesting
         {
             HomePage homePage = new HomePage();
             FirmMemosPage fmPage = new FirmMemosPage();
-            
+
             homePage.FirmMemosLink.Click();
-            WebDriver.Driver.WaitForAjax();
+            PageObjectHelper.WaitForApplicationLoad(WebDriver.Driver);
+
+
             fmPage.LawFirmExpandFilter.ScrollIntoView(WebDriver.Driver);
             fmPage.LawFirmExpandFilter.Click();
-            
         }
 
         [TearDown]
