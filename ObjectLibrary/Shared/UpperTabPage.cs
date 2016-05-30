@@ -21,6 +21,6 @@ namespace ObjectLibrary.Shared
         [FindsBy(How = How.XPath, Using = "//li[contains(@class, 'logout-link')]")]
         public IWebElement logoutLink { get; set; }
 
-        
+
     }
 }

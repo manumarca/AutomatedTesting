@@ -25,25 +25,38 @@ namespace AutomatedTesting.InternalActions
             {
                 case "Firefox":
                     WebDriver.Driver = new FirefoxDriver();
+                    Maximize();
                     break;
                 case "Chrome":
-                    WebDriver.Driver = new ChromeDriver();  
+                    WebDriver.Driver = new ChromeDriver();
+                    Maximize();
                     break;
                 case "Internet Explorer":
-                    WebDriver.Driver = new InternetExplorerDriver();
+                    InternetExplorerOptions ieoptions = new InternetExplorerOptions();
+                    ieoptions.EnableNativeEvents = false;
+                    WebDriver.Driver = new InternetExplorerDriver(ieoptions);
+                    Maximize();
                     break;
                 case "Edge":
                     WebDriver.Driver = new EdgeDriver();
+                    Maximize();
                     break;
                 case "Opera":
                     OperaOptions option = new OperaOptions();
                     option.BinaryLocation = @"C:\Users\Manuel Marcatili\Documents\Visual Studio 2013\Projects\AutomatedTesting\packages\operadriver_win64";
                     WebDriver.Driver = new OperaDriver(option.BinaryLocation);
+                    Maximize();
                     break;
                 case "Safari":
                     WebDriver.Driver = new SafariDriver();
+                    Maximize();
                     break;
             }
+        }
+
+        public static void Maximize()
+        {
+            WebDriver.Driver.Manage().Window.Maximize();
         }
 
         public static void CloseBrowser()

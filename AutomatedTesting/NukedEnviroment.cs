@@ -14,40 +14,54 @@ using OpenQA.Selenium.Opera;
 using NUnit.Framework;
 using AutomatedTesting.InternalActions;
 using ObjectLibrary.Shared;
+using ObjectLibrary.Pages.Home;
+using ObjectLibrary.Pages.FirmMemosPages;
 using OpenQA.Selenium.Remote;
+using Repositories.cs;
+using Repositories.cs.Helpers;
+
 namespace AutomatedTesting
 {
     class NukedEnviroment
     {
-    
+
+
+
+        
         [SetUp]
         public void Initialize()
         {
-            //Set Basic XML 
-            var config = ConfigurationSettings.AppSettings;
             //Set which browser is going to run
             BrowserActions.SetBrowser();
-            //Goes to Intelligize
-            BrowserActions.GoToUrl(config["Enviroment"]);
             //Gets Login Class
             LoginActions login = new LoginActions();
+            //Goes to Intelligize
+            BrowserActions.GoToUrl(ConfigurationSettings.AppSettings["Enviroment"]);
             //Logs In 
-            login.EnterUser();
-            login.EnterPassword();
-            login.ClickOnSignIn();
+            login.Login();
         }
 
         [Test]
         public void ExecuteTest()
         {
+            HomePage homePage = new HomePage();
+            FirmMemosPage fmPage = new FirmMemosPage();
+            
+            homePage.FirmMemosLink.Click();
+            WebDriver.Driver.WaitForAjax();
+            fmPage.LawFirmExpandFilter.ScrollIntoView(WebDriver.Driver);
+            fmPage.LawFirmExpandFilter.Click();
             
         }
 
         [TearDown]
         public void TestCleanUp()
         {
-            LogoutActions.LogOut();
-            Thread.Sleep(5000);
+            //Gets Logout Class
+            LogoutActions logOut = new LogoutActions();
+            //Logs Out from Application
+            logOut.LogOut();
+            //Closes Browser
             BrowserActions.CloseBrowser();
         }
 

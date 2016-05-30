@@ -15,7 +15,7 @@ namespace Repositories.cs
     {
         UnityContainer container = new UnityContainer();
         private IRepository<Resource> resourceRepository;
-        private IRepository<DataEnvironment> environmentRepository;
+        private IRepository<GlobalSettings> globalSettingsRepository;
         
         public UnitOfWork()
         {
@@ -34,15 +34,15 @@ namespace Repositories.cs
             }
         }
 
-        public IRepository<DataEnvironment> EnvironmentRepository
+        public IRepository<GlobalSettings> EnvironmentRepository
         {
             get
             {
-                if (this.environmentRepository == null)
+                if (this.globalSettingsRepository == null)
                 {
-                    this.environmentRepository = container.Resolve<IRepository<DataEnvironment>>();
+                    this.globalSettingsRepository = container.Resolve<IRepository<GlobalSettings>>();
                 }
-                return environmentRepository;
+                return globalSettingsRepository;
             }
         }
     }
