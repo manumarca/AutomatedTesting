@@ -67,6 +67,11 @@ namespace Repositories.cs.Helpers
         {
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
         }
+
+        public static IList<IWebElement> GetRowsFromTable(this IWebElement element)
+        {
+           return element.FindElements(By.TagName("tr"));
+        }
        
     }
 }
