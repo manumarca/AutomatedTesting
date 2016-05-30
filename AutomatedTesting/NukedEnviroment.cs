@@ -46,13 +46,16 @@ namespace AutomatedTesting
         {
             HomePage homePage = new HomePage();
             FirmMemosPage fmPage = new FirmMemosPage();
-
+            FirmMemosPopup fmPopup = new FirmMemosPopup();
             homePage.FirmMemosLink.Click();
             PageObjectHelper.WaitForApplicationLoad(WebDriver.Driver);
-
+            fmPage.LawFirmExpandFilter.Click();
+            Thread.Sleep(1000);
 
             fmPage.LawFirmExpandFilter.ScrollIntoView(WebDriver.Driver);
             fmPage.LawFirmExpandFilter.Click();
+            fmPopup.BtnCancel.Click();
+
         }
 
         [TearDown]
