@@ -32,14 +32,15 @@ namespace AutomatedTesting
         [SetUp]
         public void Initialize()
         {
-            ////Set which browser is going to run
-            //BrowserActions.SetBrowser();
-            ////Gets Login Class
-            //LoginActions login = new LoginActions();
-            ////Goes to Intelligize
-            //BrowserActions.GoToUrl(ConfigurationSettings.AppSettings["Enviroment"]);
-            ////Logs In 
-            //login.Login();
+            //Set which browser is going to run
+            BrowserActions.SetBrowser();
+            //Gets Login Class
+            LoginActions login = new LoginActions();
+            //Goes to Intelligize
+            BrowserActions.GoToUrl(ConfigurationSettings.AppSettings["Enviroment"]);
+            //Logs In 
+            WebDriver.Driver.Manage().Timeouts().SetPageLoadTimeout(TimeSpan.FromSeconds(30));
+            login.Login();
         }
 
         [Test]
@@ -48,6 +49,8 @@ namespace AutomatedTesting
 
             #region Navigate To Firm Memos
             //Goes To Firm Memos Page
+            FirmMemosPage fmPage = new FirmMemosPage();
+            HomePage homePage = new HomePage();
             homePage.FirmMemosLink.Click();
             //Waits for ajax loading to finish
             BrowserActions.WaitForApplicationLoad(WebDriver.Driver);

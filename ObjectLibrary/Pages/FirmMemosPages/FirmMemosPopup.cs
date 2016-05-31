@@ -42,11 +42,12 @@ namespace ObjectLibrary.Pages.FirmMemosPages
                 {
                     cells.Add(table.FindElement(By.Id(trId + trStartId)));
                     trActualId++;
+                    Actions act = new Actions(WebDriver.Driver);
+                    act.MoveToElement(table.FindElement(By.Id(trId + (trStartId)))).Build().Perform();
                 }
                 catch (NoSuchElementException)
                 {
-                    Actions act = new Actions(WebDriver.Driver);
-                    act.MoveToElement(table.FindElement(By.Id(trPureId + (trActualId - 1)))).Build().Perform();
+
                 }
             }
         }
