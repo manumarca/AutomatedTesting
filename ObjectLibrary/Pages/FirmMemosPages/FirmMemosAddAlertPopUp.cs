@@ -27,6 +27,8 @@ namespace ObjectLibrary.Pages.FirmMemosPages
 
         [FindsBy(How = How.XPath, Using = ".//td[@role='presentation']/label[contains(., 'RSS Feed')]/preceding-sibling::input[@id[contains(., 'radiofield')]]")]
         public IWebElement RssFeedRadiobutton { get; set; }
-        
+
+        [FindsBy(How = How.Name, Using = "global-zeroclipboard-flash-bridge")]
+        public IWebElement CopyLink { get; set; }
     }
 }
