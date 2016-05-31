@@ -106,15 +106,8 @@ namespace AutomatedTesting
                 //Id´s from Pop Up changing constantly looking workaround to capture the element with stronger and constant property
                 #region Id Bug
                 ////Clicks RSS Feed RadioButton
-                var elements = WebDriver.Driver.FindElements(By.XPath("//input[starts-with(@id, 'radiofield-')]"));
-                foreach (var element in elements)
-                {
-                    Console.WriteLine(element.Text);
-                    Console.WriteLine(element.Enabled);
-                    Console.WriteLine(element.GetAttribute("Id"));
-                }
-                //poc.FirmMemosAddAlertPopUp.rssRadioButton.WaitUntilClickable(WebDriver.Driver);
-                //poc.FirmMemosAddAlertPopUp.rssRadioButton.Click();
+                poc.FirmMemosAddAlertPopUp.RssFeedRadiobutton.WaitUntilClickable(WebDriver.Driver);
+                poc.FirmMemosAddAlertPopUp.RssFeedRadiobutton.Click();
                 ////Copy URL Link
                 unitOfWork.RssFeedRepository.UpdateObject(lawFirm.LawFirmName,"NewURL","Changed"); // poc.FirmMemosAddAlertPopUp.RSSFeedURLBox.Text
                 ////Writes Down Alert Name
