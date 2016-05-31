@@ -109,7 +109,7 @@ namespace AutomatedTesting
                 poc.FirmMemosAddAlertPopUp.RssFeedRadiobutton.WaitUntilClickable(WebDriver.Driver);
                 poc.FirmMemosAddAlertPopUp.RssFeedRadiobutton.Click();
                 ////Copy URL Link
-                unitOfWork.RssFeedRepository.UpdateObject(lawFirm.LawFirmName,"NewURL","Changed"); // poc.FirmMemosAddAlertPopUp.RSSFeedURLBox.Text
+                unitOfWork.RssFeedRepository.UpdateObject(lawFirm.LawFirmName, "NewURL", poc.FirmMemosAddAlertPopUp.RSSFeedURLBox.Text); 
                 ////Writes Down Alert Name
                 var alertName = "FM - " + lawFirm.Name2;
                 //poc.FirmMemosAddAlertPopUp.AlertNameTextBox.SendKeys(alertName);
