@@ -49,14 +49,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageObjectCaller.cs" />
+    <Compile Include="Pages\FirmMemosPages\FirmMemosAddAlertPopUp.cs" />
     <Compile Include="Pages\FirmMemosPages\FirmMemosPage.cs" />
-    <Compile Include="Pages\FirmMemosPages\FirmMemosPopup.cs" />
+    <Compile Include="Pages\FirmMemosPages\FirmMemosLawPopup.cs" />
     <Compile Include="Pages\Home\HomePage.cs" />
     <Compile Include="Pages\LogIn\LoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\SwitchProducts.cs" />
     <Compile Include="Shared\UpperTabPage.cs" />
-    <Compile Include="Shared\WebDriver.cs" />
+    <Compile Include="WebDriver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

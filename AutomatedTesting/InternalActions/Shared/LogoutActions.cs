@@ -1,4 +1,4 @@
-﻿using ObjectLibrary.Shared;
+﻿using ObjectLibrary;
 using OpenQA.Selenium;
 using Repositories.cs.Helpers;
 using System;
@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Interactions;
 
-namespace AutomatedTesting.InternalActions
+namespace AutomatedTesting.InternalActions.Shared
 {
     public class LogoutActions
     {
-        private static UpperTabPage ut = new UpperTabPage();
+        private static PageObjectCaller poc = new PageObjectCaller();
 
         public void LogOut ()
         {
@@ -23,15 +23,15 @@ namespace AutomatedTesting.InternalActions
 
         public void ClickUserDetailsIcon()
         {
-            ut.UserDetailsIcon.ResetLayer(WebDriver.Driver);
-            ut.UserDetailsIcon.FindElementWaitUntilClickable(WebDriver.Driver);
-            ut.UserDetailsIcon.Click();
+            poc.UpperTabPage.UserDetailsIcon.ResetLayer(WebDriver.Driver);
+            poc.UpperTabPage.UserDetailsIcon.WaitUntilClickable(WebDriver.Driver);
+            poc.UpperTabPage.UserDetailsIcon.Click();
         }
 
         public void ClickLogOut()
         {
-            ut.logoutLink.FindElementWaitUntilClickable(WebDriver.Driver);
-            ut.logoutLink.Click();
+            poc.UpperTabPage.logoutLink.WaitUntilClickable(WebDriver.Driver);
+            poc.UpperTabPage.logoutLink.Click();
         }
     }
 }

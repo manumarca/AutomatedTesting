@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ObjectLibrary.Pages.LogIn;
-using ObjectLibrary.Shared;
+using ObjectLibrary;
 using System.Configuration;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
@@ -16,11 +15,11 @@ using Repositories.cs;
 using Repositories.cs.Helpers;
 
 
-namespace AutomatedTesting.InternalActions
+namespace AutomatedTesting.InternalActions.Shared
 {
     public class LoginActions
     {
-        LoginPage loginPage = new LoginPage();
+        PageObjectCaller poc = new PageObjectCaller();
 
 
         public void Login()
@@ -32,17 +31,17 @@ namespace AutomatedTesting.InternalActions
         
         public void EnterUser()
         {
-            loginPage.UserName.SendKeys(ConfigurationSettings.AppSettings["User"]);
+            poc.LoginPage.UserName.SendKeys(ConfigurationSettings.AppSettings["User"]);
         }
 
         public void EnterPassword()
         {
-            loginPage.PassWord.SendKeys(ConfigurationSettings.AppSettings["Password"]);
+            poc.LoginPage.PassWord.SendKeys(ConfigurationSettings.AppSettings["Password"]);
         }
 
         public void ClickOnSignIn()
         {
-            loginPage.LogInButton.JsClick(WebDriver.Driver);
+            poc.LoginPage.LogInButton.Click();
         }
     }
 }

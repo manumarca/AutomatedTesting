@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 
-namespace ObjectLibrary.Shared
+namespace ObjectLibrary
 {
     public static class WebDriver
     {
