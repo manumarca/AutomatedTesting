@@ -16,11 +16,23 @@ namespace Repositories.cs
         UnityContainer container = new UnityContainer();
         private IRepository<Resource> resourceRepository;
         private IRepository<GlobalSettings> globalSettingsRepository;
-        private IRepository<LawFirmFeed> rssFeedRepository;
-        
+        private IRepository<LawFirmFeed> lawFirmFeedRepository;
+        private IRepository<AccountantFirmFeed> accountFirmFeedRepository;
         public UnitOfWork()
         {
             container.LoadConfiguration();
+        }
+
+        public IRepository<AccountantFirmFeed> AccountantFirmFeed
+        {
+            get
+            {
+                if (this.accountFirmFeedRepository == null)
+                {
+                    this.accountFirmFeedRepository = container.Resolve<IRepository<AccountantFirmFeed>>();
+                }
+                return accountFirmFeedRepository;
+            }
         }
 
         public IRepository<Resource> ResourceRepository
@@ -46,15 +58,15 @@ namespace Repositories.cs
                 return globalSettingsRepository;
             }
         }
-        public IRepository<LawFirmFeed> RssFeedRepository
+        public IRepository<LawFirmFeed> LawFirmFeed
         {
             get
             {
-                if (this.rssFeedRepository == null)
+                if (this.lawFirmFeedRepository == null)
                 {
-                    this.rssFeedRepository = container.Resolve<IRepository<LawFirmFeed>>();
+                    this.lawFirmFeedRepository = container.Resolve<IRepository<LawFirmFeed>>();
                 }
-                return rssFeedRepository;
+                return lawFirmFeedRepository;
             }
         }
     }

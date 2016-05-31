@@ -27,5 +27,12 @@ namespace ObjectLibrary.Pages.FirmMemosPages
 
         [FindsBy(How = How.Id, Using = "button-1020-btnEl")]
         public IWebElement AddAlertButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = ".//*[@id[contains(., 'tab') and contains(., 'closeEl')]]")]
+        public IWebElement CloseFirstTab { get; set; }
+
+        [FindsBy(How = How.Id, Using = "accountingfirmfilter-inputEl")]
+        public IWebElement AccountFirmTextBoxFilter { get; set; }
+        
     }
 }

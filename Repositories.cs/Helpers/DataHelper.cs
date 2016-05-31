@@ -149,7 +149,7 @@ namespace Repositories.cs.Helpers
         /// </summary>
         public void Close()
         {
-            this.excelApp.Quit();
+            excelApp.Quit();
         }
 
         /// <summary>

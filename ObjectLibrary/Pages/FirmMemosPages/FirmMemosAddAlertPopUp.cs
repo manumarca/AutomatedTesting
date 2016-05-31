@@ -22,13 +22,13 @@ namespace ObjectLibrary.Pages.FirmMemosPages
         [FindsBy(How = How.XPath, Using = ".//*[@id[contains(., 'textfield') and contains(., 'inputEl')]]")]
         public IWebElement RSSFeedURLBox { get; set; }
 
-        [FindsBy(How = How.Id, Using = "combobox-1098-inputEl")]
+        [FindsBy(How = How.XPath, Using = ".//*[@id[contains(., 'combobox') and contains(., 'inputCell')]]/div[@id[contains(., 'ext-gen')]]/following-sibling::input[@id[contains(., 'combobox')]]")]
         public IWebElement AlertNameTextBox { get; set; }
 
         [FindsBy(How = How.XPath, Using = ".//td[@role='presentation']/label[contains(., 'RSS Feed')]/preceding-sibling::input[@id[contains(., 'radiofield')]]")]
         public IWebElement RssFeedRadiobutton { get; set; }
 
-        [FindsBy(How = How.Name, Using = "global-zeroclipboard-flash-bridge")]
+        [FindsBy(How = How.PartialLinkText, Using = "Copy Link")]
         public IWebElement CopyLink { get; set; }
     }
 }
