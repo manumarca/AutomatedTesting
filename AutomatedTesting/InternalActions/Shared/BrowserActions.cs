@@ -19,10 +19,9 @@ namespace AutomatedTesting.InternalActions.Shared
 {
     public static class BrowserActions
     {
-        public static void SetBrowser()
+        public static void SetBrowser(string browser)
         {
-            var config = ConfigurationSettings.AppSettings;
-            switch (config["Browser"])
+            switch (browser)
             {
                 case "Firefox":
                     WebDriver.Driver = new FirefoxDriver();
