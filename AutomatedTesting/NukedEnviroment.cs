@@ -57,13 +57,13 @@ namespace AutomatedTesting
             //poc.FirmMemosPage.LawFirmExpandFilter.WaitUntilClickable(WebDriver.Driver);
             //poc.FirmMemosPage.LawFirmExpandFilter.Click();
             #endregion
-
+            
             #region Closes Law Firm Pop Up
             //Closes Law Firm Pop Up
             //poc.FirmMemosLawPopUp.LawFirmCancelFilter.WaitUntilClickable(WebDriver.Driver);
             //poc.FirmMemosLawPopUp.LawFirmCancelFilter.Click();
             #endregion
-
+            
             #region Gets LawFirm Feed Names
             //Can Use this 
             var lawFirmFeed = unitOfWork.RssFeedRepository.GetList();
@@ -71,7 +71,7 @@ namespace AutomatedTesting
             //Or This 
 
             #endregion
-            
+                        
             //Takes each lawfirm to make the rssFeed
             foreach (var lawFirm in lawFirmFeed)
             {
@@ -82,7 +82,7 @@ namespace AutomatedTesting
                 //Enter to accept law fimr written
                 poc.FirmMemosPage.LawFirmTextBoxFilter.SendKeys(Keys.Tab);
                 #endregion
-
+            
                 #region Searches
                 //Starts The search
                 poc.FirmMemosPage.SearchButton.WaitUntilClickable(WebDriver.Driver);

@@ -26,32 +26,34 @@ namespace ObjectLibrary.Pages.FirmMemosPages
         [FindsBy(How = How.Id, Using = "ext-gen1251")]
         public IWebElement LawFirmFrameFilter { get; set; }
 
-        [FindsBy(How = How.Id, Using = "gridview-1080-table")]
+        //[FindsBy(How = How.Id, Using = "gridview-1106-table")]
+        [FindsBy(How = How.XPath, Using = ".//table[@id[contains(., 'gridview') and contains(., 'table')]]")]
         public IWebElement LawFirmListFilter { get; set; }
 
         [FindsBy(How = How.Id, Using = "textfilter-1129-inputEl")]
         public IWebElement LawFirmTextBoxFilter { get; set; }
 
-        public void getListOfLawFirms ()
+        public List<string> getListOfLawFirms ()
         {
-            
+            System.Threading.Thread.Sleep(1000);
             int trStartId = 11;
             int trActualId = trStartId;
-            List<IWebElement> cells = new List<IWebElement>() { };
+            List<string> cells = new List<string>() { };
             string trId = "gridview-1080-record-ext-record-";
             string trPureId = trId;
 
-            for (;trStartId<176;trStartId++)
+            for (;;trStartId++)
             {
                 try
                 {
-                    cells.Add(LawFirmListFilter.FindElement(By.Id(trId + trStartId)));
+                    cells.Add(LawFirmListFilter.FindElement(By.Id(trId + trStartId)).Text);
                     trActualId++;
-                }
-                catch (NoSuchElementException)
-                {
                     Actions act = new Actions(WebDriver.Driver);
-                    act.MoveToElement(LawFirmListFilter.FindElement(By.Id(trPureId + (trActualId - 1)))).Build().Perform();
+                    act.MoveToElement(LawFirmListFilter.FindElement(By.Id(trId + (trStartId)))).Build().Perform();
+                }
+                catch (Exception)
+                {
+                    return cells;
                 }
             }
         }
