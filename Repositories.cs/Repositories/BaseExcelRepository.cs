@@ -117,7 +117,7 @@ namespace Repositories.cs.Repositories
                 var column = dataHelper.GetColumnbyName(columnToBeUpdated);
                 var cell = column.ToString() + row.ToString();
                 dataHelper.Write(cell, updatedValue);
-       
+                dataHelper.Save();
             }
             catch (Exception e)
             {

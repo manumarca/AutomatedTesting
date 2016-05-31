@@ -109,11 +109,19 @@ namespace Repositories.cs.Helpers
         /// </summary>
         public void Open()
         {
-            excelApp = new Excel.Application();
-            excelApp.Visible = true;
-            book = excelApp.Workbooks.Open(folder + excelName, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
-            sheet = (Excel._Worksheet)book.Sheets[1];
-            range = sheet.UsedRange;
+            if ((excelApp == null) || (!excelApp.Visible))
+            {
+                excelApp = new Excel.Application();
+                excelApp.Visible = true;
+                book = excelApp.Workbooks.Open(folder + excelName, 0, false, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
+                sheet = (Excel._Worksheet)book.Sheets[1];
+                range = sheet.UsedRange;
+            }
+        }
+
+        public void Save()
+        {
+            book.Save();
         }
 
         /// <summary>

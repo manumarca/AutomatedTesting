@@ -14,5 +14,6 @@ namespace ModelsLibrary.Shared
         public string Name;
         public string Name2;
         public string NewURL;
+        public string AlertName;
     }
 }
