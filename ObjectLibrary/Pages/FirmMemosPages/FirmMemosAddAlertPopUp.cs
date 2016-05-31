@@ -22,7 +22,7 @@ namespace ObjectLibrary.Pages.FirmMemosPages
         [FindsBy(How = How.LinkText, Using = "Cancel")]
         public IWebElement CancelButton { get; set; }
 
-        [FindsBy(How = How.LinkText, Using = "textfield-1115-inputEl")]
+        [FindsBy(How = How.XPath, Using = ".//*[@id[contains(., 'textfield') and contains(., 'inputEl')]]")]
         public IWebElement RSSFeedURLBox { get; set; }
 
         [FindsBy(How = How.Id, Using = "combobox-1098-inputEl")]
