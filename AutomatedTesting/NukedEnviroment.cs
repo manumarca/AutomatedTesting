@@ -26,14 +26,16 @@ namespace AutomatedTesting
         [SetUp]
         public void Initialize()
         {
+            var enviroment = unitOfWork.EnvironmentRepository.GetList();
+            ModelsLibrary.Shared.GlobalSettings wantedEnviroment = enviroment.Find(x => x.Page == "Default");
             //Set which browser is going to run
-            BrowserActions.SetBrowser();
+            BrowserActions.SetBrowser(wantedEnviroment.Browser);
             //Gets Login Class
             LoginActions login = new LoginActions();
             //Goes to Intelligize
-            BrowserActions.GoToUrl(ConfigurationSettings.AppSettings["Enviroment"]);
+            BrowserActions.GoToUrl(wantedEnviroment.Enviroment);
             //Logs In 
-            login.Login();
+            login.Login(wantedEnviroment);
         }
 
         #region Global Instances
@@ -45,11 +47,11 @@ namespace AutomatedTesting
         public void ExecuteTest()
         {
             #region Navigate To Firm Memos
-            ////Goes To Firm Memos Page
-            //poc.HomePage.FirmMemosLink.WaitUntilClickable(WebDriver.Driver);
-            //poc.HomePage.FirmMemosLink.Click();
-            ////Waits for ajax loading to finish
-            //BrowserActions.WaitForApplicationLoad(WebDriver.Driver);
+            //Goes To Firm Memos Page
+            poc.HomePage.FirmMemosLink.WaitUntilClickable(WebDriver.Driver);
+            poc.HomePage.FirmMemosLink.Click();
+            //Waits for ajax loading to finish
+            BrowserActions.WaitForApplicationLoad(WebDriver.Driver);
             #endregion
 
             #region Opens Law Firm Pop Up
@@ -104,6 +106,13 @@ namespace AutomatedTesting
                 //Id´s from Pop Up changing constantly looking workaround to capture the element with stronger and constant property
                 #region Id Bug
                 ////Clicks RSS Feed RadioButton
+                var elements = WebDriver.Driver.FindElements(By.XPath("//input[starts-with(@id, 'radiofield-')]"));
+                foreach (var element in elements)
+                {
+                    Console.WriteLine(element.Text);
+                    Console.WriteLine(element.Enabled);
+                    Console.WriteLine(element.GetAttribute("Id"));
+                }
                 //poc.FirmMemosAddAlertPopUp.rssRadioButton.WaitUntilClickable(WebDriver.Driver);
                 //poc.FirmMemosAddAlertPopUp.rssRadioButton.Click();
                 ////Copy URL Link
@@ -127,7 +136,7 @@ namespace AutomatedTesting
         public void TestCleanUp()
         {
             //Just for this tests if fails inside of pop up may break CleanUp so if pop up open this will close it
-            if (poc.FirmMemosAddAlertPopUp.CancelButton.Displayed) poc.FirmMemosAddAlertPopUp.CancelButton.Click();
+            //if (poc.FirmMemosAddAlertPopUp.CancelButton.Displayed) poc.FirmMemosAddAlertPopUp.CancelButton.Click();
             //Gets Logout Class
             LogoutActions logOut = new LogoutActions();
             //Logs Out from Application

@@ -8,6 +8,7 @@ namespace ModelsLibrary.Shared
 {
     public class GlobalSettings
     {
+        public string Page;
         public string Browser;
         public string Enviroment;
         public string User;

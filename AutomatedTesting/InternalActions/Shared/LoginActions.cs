@@ -20,23 +20,23 @@ namespace AutomatedTesting.InternalActions.Shared
     public class LoginActions
     {
         PageObjectCaller poc = new PageObjectCaller();
+        UnitOfWork unitOfWork = new UnitOfWork();
 
-
-        public void Login()
+        public void Login(ModelsLibrary.Shared.GlobalSettings env)
         {
-            EnterUser();
-            EnterPassword();
+            EnterUser(env);
+            EnterPassword(env);
             ClickOnSignIn();
         }
         
-        public void EnterUser()
+        public void EnterUser(ModelsLibrary.Shared.GlobalSettings env)
         {
-            poc.LoginPage.UserName.SendKeys(ConfigurationSettings.AppSettings["User"]);
+            poc.LoginPage.UserName.SendKeys(env.User);
         }
 
-        public void EnterPassword()
+        public void EnterPassword(ModelsLibrary.Shared.GlobalSettings env)
         {
-            poc.LoginPage.PassWord.SendKeys(ConfigurationSettings.AppSettings["Password"]);
+            poc.LoginPage.PassWord.SendKeys(env.Password);
         }
 
         public void ClickOnSignIn()
