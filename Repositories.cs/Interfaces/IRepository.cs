@@ -12,6 +12,6 @@ namespace Repositories.cs.Interfaces
         List<T> GetListByKeyAndValue(string key, string val);
         T GetObject(string row);
         void SetObject(T obj);
-        void UpdateObject(T obj);
+        void UpdateObject(string firstColumnName, string columnToBeUpdated, string updatedValue);
     }
 }

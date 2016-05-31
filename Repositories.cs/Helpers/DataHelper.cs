@@ -11,8 +11,6 @@ namespace Repositories.cs.Helpers
     public class DataHelper
     {
         #region Vars
-
-        
         private Excel.Application excelApp;
         private Excel.Workbook book;
         private Excel._Worksheet sheet;
@@ -112,6 +110,7 @@ namespace Repositories.cs.Helpers
         public void Open()
         {
             excelApp = new Excel.Application();
+            excelApp.Visible = true;
             book = excelApp.Workbooks.Open(folder + excelName, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", true, false, 0, true, 1, 0);
             sheet = (Excel._Worksheet)book.Sheets[1];
             range = sheet.UsedRange;
@@ -152,7 +151,7 @@ namespace Repositories.cs.Helpers
         /// <param name="data"></param>
         public void Write(string cell, string data)
         {
-            this.excelApp.Range[cell.ToUpper()].Value = data;
+                this.excelApp.Range[cell.ToUpper()].Value = data;
         }
 
         /// <summary>

@@ -11,11 +11,11 @@ using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Opera;
 using OpenQA.Selenium.Safari;
 using System.Configuration;
-using ObjectLibrary.Shared;
+using ObjectLibrary;
 using OpenQA.Selenium.Remote;
 using System.Diagnostics;
 
-namespace AutomatedTesting.InternalActions
+namespace AutomatedTesting.InternalActions.Shared
 {
     public static class BrowserActions
     {

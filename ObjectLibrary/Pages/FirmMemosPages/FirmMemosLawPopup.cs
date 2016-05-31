@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace ObjectLibrary.Pages.FirmMemosPages
 {
-    public class FirmMemosPopup
+    public class FirmMemosLawPopup
     {
-        public FirmMemosPopup()
+        public FirmMemosLawPopup()
         {
             PageFactory.InitElements(WebDriver.Driver, this);
         }
@@ -20,15 +20,20 @@ namespace ObjectLibrary.Pages.FirmMemosPages
         [FindsBy(How = How.Id, Using = "button-1093-btnIconEl")]
         public static IWebElement BtnOk { get; set; }
 
-        [FindsBy(How = How.Id, Using = "button-1094")]
-        public IWebElement BtnCancel { get; set; }
+        [FindsBy(How = How.LinkText, Using = "Cancel")]
+        public IWebElement LawFirmCancelFilter { get; set; }
 
-        public static void getListOfLawFirms ()
+        [FindsBy(How = How.Id, Using = "ext-gen1251")]
+        public IWebElement LawFirmFrameFilter { get; set; }
+
+        [FindsBy(How = How.Id, Using = "gridview-1080-table")]
+        public IWebElement LawFirmListFilter { get; set; }
+
+        [FindsBy(How = How.Id, Using = "textfilter-1129-inputEl")]
+        public IWebElement LawFirmTextBoxFilter { get; set; }
+
+        public void getListOfLawFirms ()
         {
-            string tableId = "gridview-1080-table";
-
-            IWebElement table = WebDriver.Driver.FindElement(By.Id(tableId));
-            //ICollection<IWebElement> rows = table.FindElements(By.TagName("tr"));
             
             int trStartId = 11;
             int trActualId = trStartId;
@@ -40,14 +45,15 @@ namespace ObjectLibrary.Pages.FirmMemosPages
             {
                 try
                 {
-                    cells.Add(table.FindElement(By.Id(trId + trStartId)));
+                    cells.Add(LawFirmListFilter.FindElement(By.Id(trId + trStartId)));
                     trActualId++;
                     Actions act = new Actions(WebDriver.Driver);
                     act.MoveToElement(table.FindElement(By.Id(trId + (trStartId)))).Build().Perform();
                 }
                 catch (NoSuchElementException)
                 {
-
+                    Actions act = new Actions(WebDriver.Driver);
+                    act.MoveToElement(LawFirmListFilter.FindElement(By.Id(trPureId + (trActualId - 1)))).Build().Perform();
                 }
             }
         }

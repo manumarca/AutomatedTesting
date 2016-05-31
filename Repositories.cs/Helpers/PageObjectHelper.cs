@@ -14,7 +14,7 @@ namespace Repositories.cs.Helpers
 {
     public static class PageObjectHelper
     {
-        private static TimeSpan timeOut = TimeSpan.FromSeconds(10);
+        private static TimeSpan timeOut = TimeSpan.FromSeconds(15);
         private static WebDriverWait wait;
         private static IWebElement elementToBeLocated;
 
@@ -33,18 +33,14 @@ namespace Repositories.cs.Helpers
             return wait.Until(ExpectedConditions.ElementIsVisible(locator));
         }
 
-        public static IWebElement FindElementWaitUntilClickable(this IWebElement locator,IWebDriver driver)
+        public static IWebElement WaitUntilClickable(this IWebElement locator,IWebDriver driver)
         {
             driver.SwitchTo().Window(driver.CurrentWindowHandle);
             wait = new WebDriverWait(driver, timeOut);
             return wait.Until(ExpectedConditions.ElementToBeClickable(locator));
         }
 
-        public static void JsClick(this IWebElement element, IWebDriver driver)
-        {
-            ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", element);
-        }
-        public static void WaitForAjax(this IWebDriver driver, int timeoutSecs = 10, bool throwException = false)
+                public static void WaitForAjax(this IWebDriver driver, int timeoutSecs = 10, bool throwException = false)
         {
             for (var i = 0; i < timeoutSecs; i++)
             {

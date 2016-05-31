@@ -108,9 +108,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InternalActions\BrowserActions.cs" />
-    <Compile Include="InternalActions\LoginActions.cs" />
-    <Compile Include="InternalActions\LogoutActions.cs" />
+    <Compile Include="InternalActions\Shared\BrowserActions.cs" />
+    <Compile Include="InternalActions\Shared\LoginActions.cs" />
+    <Compile Include="InternalActions\Shared\LogoutActions.cs" />
     <Compile Include="NukedEnviroment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

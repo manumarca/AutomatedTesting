@@ -104,9 +104,26 @@ namespace Repositories.cs.Repositories
             throw new NotImplementedException();
         }
 
-        public void UpdateObject(T obj)
+        public void UpdateObject(string firstColumnName, string columnToBeUpdated,string updatedValue)
         {
-            throw new NotImplementedException();
+            dataHelper.Open();
+            try
+            {
+                Type type = typeof(T);
+                var sheetName = type.Name;
+                dataHelper.SelectSheetByName(sheetName);
+                var listPropData = dataHelper.GetFirstRowNamesList();
+                var row = dataHelper.GetRowCondition(firstColumnName);
+                var column = dataHelper.GetColumnbyName(columnToBeUpdated);
+                var cell = column.ToString() + row.ToString();
+                dataHelper.Write(cell, updatedValue);
+       
+            }
+            catch (Exception e)
+            {
+                dataHelper.Close();
+                throw new Exception("Fail due to: " + e.Message);
+            }
         }
     }
 }
