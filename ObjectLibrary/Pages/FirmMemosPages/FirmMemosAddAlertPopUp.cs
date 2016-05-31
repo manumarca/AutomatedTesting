@@ -27,6 +27,9 @@ namespace ObjectLibrary.Pages.FirmMemosPages
 
         [FindsBy(How = How.Id, Using = "combobox-1098-inputEl")]
         public IWebElement AlertNameTextBox { get; set; }
+
+        [FindsBy(How = How.XPath, Using = ".//td[@role='presentation']/label[contains(., 'RSS Feed')]/preceding-sibling::input[@id[contains(., 'radiofield')]]")]
+        public IWebElement RssFeedRadiobutton { get; set; }
         
     }
 }
