@@ -113,7 +113,9 @@
     <Compile Include="InternalActions\Shared\LogoutActions.cs" />
     <Compile Include="NukedEnviroment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestConditions\FirmMemos\LawFirms.cs" />
+    <Compile Include="TestConditions\FirmMemos\LawFirms.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
