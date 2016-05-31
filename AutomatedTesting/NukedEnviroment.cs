@@ -65,8 +65,11 @@ namespace AutomatedTesting
             #endregion
             
             #region Gets LawFirm Feed Names
+            //Can Use this 
             var lawFirmFeed = unitOfWork.RssFeedRepository.GetList();
             lawFirmFeed.RemoveAll(x => x.Name2 == "?");
+            //Or This 
+
             #endregion
                         
             //Takes each lawfirm to make the rssFeed
@@ -88,9 +91,16 @@ namespace AutomatedTesting
 
                 #region Opens AddAlert Pop Up
                 //Clicks to open AddAlertButton
-                Thread.Sleep(3000);
-                poc.FirmMemosPage.AddAlertButton.Click();
+                bool clicked = false;
+                do
+                {
+                    poc.FirmMemosPage.AddAlertButton.Click();
+                    Thread.Sleep(1000);
+                    try { if (poc.FirmMemosAddAlertPopUp.CancelButton.Displayed) clicked = true; } catch { };  
+                }
+                while (!clicked);
                 #endregion
+
                 //Id´s from Pop Up changing constantly looking workaround to capture the element with stronger and constant property
                 #region Id Bug
                 ////Clicks RSS Feed RadioButton
@@ -99,9 +109,11 @@ namespace AutomatedTesting
                 ////Copy URL Link
                 unitOfWork.RssFeedRepository.UpdateObject(lawFirm.LawFirmName,"NewURL","Changed"); // poc.FirmMemosAddAlertPopUp.RSSFeedURLBox.Text
                 ////Writes Down Alert Name
-                //poc.FirmMemosAddAlertPopUp.AlertNameTextBox.SendKeys("FM - " + rss.Name2);
+                var alertName = "FM - " + lawFirm.Name2;
+                //poc.FirmMemosAddAlertPopUp.AlertNameTextBox.SendKeys(alertName);
+                unitOfWork.RssFeedRepository.UpdateObject(lawFirm.LawFirmName,"AlertName",alertName);
                 #endregion Id Bug
-
+                
                 #region Cleans Up used Law Firm in Search Filter
                 //Exits Pop Up Canceling the operation
                 poc.FirmMemosAddAlertPopUp.CancelButton.Click();

@@ -39,6 +39,11 @@ namespace Repositories.cs.Helpers
             wait = new WebDriverWait(driver, timeOut);
             return wait.Until(ExpectedConditions.ElementToBeClickable(locator));
         }
+        public static void WaitUntilEnabled(this IWebElement locator)
+        {
+
+            while (!locator.Enabled) { Thread.Sleep(1000); }
+        }
 
                 public static void WaitForAjax(this IWebDriver driver, int timeoutSecs = 10, bool throwException = false)
         {

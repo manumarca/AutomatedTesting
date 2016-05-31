@@ -25,7 +25,7 @@ namespace ObjectLibrary.Pages.FirmMemosPages
         [FindsBy(How = How.Id, Using = "button-1019-btnInnerEl")]
         public IWebElement SearchButton { get; set; }
 
-        [FindsBy(How = How.Id, Using = "button-1020-btnWrap")]
+        [FindsBy(How = How.Id, Using = "button-1020-btnEl")]
         public IWebElement AddAlertButton { get; set; }
     }
 }
