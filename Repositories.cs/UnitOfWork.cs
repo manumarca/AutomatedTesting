@@ -16,7 +16,7 @@ namespace Repositories.cs
         UnityContainer container = new UnityContainer();
         private IRepository<Resource> resourceRepository;
         private IRepository<GlobalSettings> globalSettingsRepository;
-        private IRepository<RSSFeed> rssFeedRepository;
+        private IRepository<LawFirmFeed> rssFeedRepository;
         
         public UnitOfWork()
         {
@@ -46,13 +46,13 @@ namespace Repositories.cs
                 return globalSettingsRepository;
             }
         }
-        public IRepository<RSSFeed> RssFeedRepository
+        public IRepository<LawFirmFeed> RssFeedRepository
         {
             get
             {
                 if (this.rssFeedRepository == null)
                 {
-                    this.rssFeedRepository = container.Resolve<IRepository<RSSFeed>>();
+                    this.rssFeedRepository = container.Resolve<IRepository<LawFirmFeed>>();
                 }
                 return rssFeedRepository;
             }

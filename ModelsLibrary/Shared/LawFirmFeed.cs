@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelsLibrary.Shared
 {
-    public class RSSFeed
+    public class LawFirmFeed
     {
         public string LawFirmName;
         public string OldRSSURL;
