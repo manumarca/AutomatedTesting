@@ -48,7 +48,7 @@ namespace AutomatedTesting.TestConditions.FirmMemos
         public void TopicMemos()
         {
 
-            #region Gets LawFirm Feed Names
+            #region Gets Topic Feed Names
             //Can Use this 
             var topicFeed = unitOfWork.TopicFeed.GetList();
             topicFeed.RemoveAll(x => x.Topic == "?");
@@ -56,10 +56,10 @@ namespace AutomatedTesting.TestConditions.FirmMemos
 
             #endregion
 
-            //Takes each lawfirm to make the rssFeed
+            //Takes each topic to make the rssFeed
             foreach (var topic in topicFeed)
             {
-                #region Writes LawFirm
+                #region Writes Topic
                 //Writes Law firm
                 poc.FirmMemosPage.TopicTextBoxFilter.SendKeys(topic.Topic);
                 BrowserActions.WaitForApplicationLoad(WebDriver.Driver);
@@ -98,7 +98,7 @@ namespace AutomatedTesting.TestConditions.FirmMemos
                 unitOfWork.TopicFeed.UpdateObject(topic.Topic, "AlertName", alertName);
                 #endregion Id Bug
 
-                #region Cleans Up used Law Firm in Search Filter
+                #region Cleans Up used topic in Search Filter
                 //Exits Pop Up Canceling the operation
                 poc.FirmMemosAddAlertPopUp.CancelButton.Click();
                 poc.FirmMemosPage.CloseFirstTab.Click();
