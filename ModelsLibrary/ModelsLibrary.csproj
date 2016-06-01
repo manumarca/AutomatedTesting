@@ -53,6 +53,7 @@
     <Compile Include="Shared\GlobalSettings.cs" />
     <Compile Include="Shared\Resource.cs" />
     <Compile Include="Shared\LawFirmFeed.cs" />
+    <Compile Include="Shared\TopicFeed.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />

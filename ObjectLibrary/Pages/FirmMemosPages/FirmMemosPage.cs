@@ -33,6 +33,10 @@ namespace ObjectLibrary.Pages.FirmMemosPages
 
         [FindsBy(How = How.Id, Using = "accountingfirmfilter-inputEl")]
         public IWebElement AccountFirmTextBoxFilter { get; set; }
+
+        [FindsBy(How = How.Id, Using = "locationsfilter-1040-inputEl")]
+        public IWebElement TopicTextBoxFilter { get; set; }
+
         
     }
 }

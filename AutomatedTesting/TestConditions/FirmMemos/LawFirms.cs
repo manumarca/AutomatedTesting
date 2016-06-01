@@ -45,7 +45,7 @@ namespace AutomatedTesting.TestConditions.FirmMemos
         }
 
         [Test]
-        public void LawFirm()
+        public void LawFirmMemos()
         {
             #region Navigate To Firm Memos
             ////Goes To Firm Memos Page
