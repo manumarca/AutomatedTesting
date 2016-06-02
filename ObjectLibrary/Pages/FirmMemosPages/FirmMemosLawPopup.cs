@@ -1,4 +1,5 @@
-﻿using ObjectLibrary.Shared;
+﻿using ObjectLibrary.Logger;
+using ObjectLibrary.Shared;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
@@ -10,11 +11,12 @@ using System.Threading.Tasks;
 
 namespace ObjectLibrary.Pages.FirmMemosPages
 {
-    public class FirmMemosLawPopup : Logger
+    public class FirmMemosLawPopup
     {   
         public FirmMemosLawPopup()
         {
             PageFactory.InitElements(WebDriver.Driver, this);
+            
         }
 
         [FindsBy(How = How.Id, Using = "button-1093-btnIconEl")]
@@ -44,6 +46,8 @@ namespace ObjectLibrary.Pages.FirmMemosPages
 
             for (;;trStartId++)
             {
+                Log.Info("Addings the cells to the list");
+
                 try
                 {
                     cells.Add(LawFirmListFilter.FindElement(By.Id(trId + trStartId)).Text);
