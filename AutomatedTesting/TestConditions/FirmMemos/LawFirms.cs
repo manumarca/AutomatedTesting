@@ -42,11 +42,24 @@ namespace AutomatedTesting.TestConditions.FirmMemos
             BrowserActions.GoToUrl(wantedEnviroment.Enviroment);
             //Logs In 
             login.Login(wantedEnviroment);
+
+            #region Enter Client Matter if Needed
+            bool clientNeeded = false;
+            try
+            {
+                poc.UpperTabPage.BillingReferenceTextBox.WaitUntilClickable(WebDriver.Driver);
+                poc.UpperTabPage.BillingReferenceTextBox.SendKeys(wantedEnviroment.BillingReference);
+                clientNeeded = true;
+            }
+            catch { }
+            if (clientNeeded) poc.UpperTabPage.BillingReferenceApplyButton.Click();
+            #endregion
         }
 
         [Test]
         public void LawFirmMemos()
         {
+            
             #region Navigate To Firm Memos
             ////Goes To Firm Memos Page
             //poc.HomePage.FirmMemosLink.WaitUntilClickable(WebDriver.Driver);
@@ -71,10 +84,11 @@ namespace AutomatedTesting.TestConditions.FirmMemos
             //Can Use this 
             var lawFirmFeed = unitOfWork.LawFirmFeed.GetList();
             lawFirmFeed.RemoveAll(x => x.Name2 == "?");
-            //Or This 
-
+            ////or
+            //var lawFirmFeed2 = poc.FirmMemosLawPopUp.getListOfLawFirms();
             #endregion
-
+         
+            
             //Takes each lawfirm to make the rssFeed
             foreach (var lawFirm in lawFirmFeed)
             {
@@ -97,8 +111,8 @@ namespace AutomatedTesting.TestConditions.FirmMemos
                 bool clicked = false;
                 do
                 {
+                    Thread.Sleep(3000);
                     poc.FirmMemosPage.AddAlertButton.Click();
-                    Thread.Sleep(1000);
                     try { if (poc.FirmMemosAddAlertPopUp.CancelButton.Displayed) clicked = true; }
                     catch { };
                 }
@@ -110,6 +124,7 @@ namespace AutomatedTesting.TestConditions.FirmMemos
                 poc.FirmMemosAddAlertPopUp.RssFeedRadiobutton.WaitUntilClickable(WebDriver.Driver);
                 poc.FirmMemosAddAlertPopUp.RssFeedRadiobutton.Click();
                 ////Copy URL Link
+                Thread.Sleep(3000);
                 unitOfWork.LawFirmFeed.UpdateObject(lawFirm.LawFirmName, "NewURL", poc.FirmMemosAddAlertPopUp.RSSFeedURLBox.GetAttribute("value"));
                 ////Writes Down Alert Name
                 var alertName = "FM - " + lawFirm.Name2;
@@ -120,11 +135,15 @@ namespace AutomatedTesting.TestConditions.FirmMemos
                 #region Cleans Up used Law Firm in Search Filter
                 //Exits Pop Up Canceling the operation
                 poc.FirmMemosAddAlertPopUp.CancelButton.Click();
+                //poc.FirmMemosAddAlertPopUp.SaveButton.Click();
+                Thread.Sleep(4000);
+                //
                 poc.FirmMemosPage.CloseFirstTab.Click();
                 //Clears Existing Search
                 for (int i = 0; i <= 3; i++) poc.FirmMemosPage.LawFirmTextBoxFilter.SendKeys(OpenQA.Selenium.Keys.Backspace);
                 #endregion
             }
+            
         }
 
         [TearDown]

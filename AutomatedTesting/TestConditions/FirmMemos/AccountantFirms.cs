@@ -41,6 +41,17 @@ namespace AutomatedTesting.TestConditions.FirmMemos
             BrowserActions.GoToUrl(wantedEnviroment.Enviroment);
             //Logs In 
             login.Login(wantedEnviroment);
+            #region Enter Client Matter if Needed
+            bool clientNeeded = false;
+            try
+            {
+                poc.UpperTabPage.BillingReferenceTextBox.WaitUntilClickable(WebDriver.Driver);
+                poc.UpperTabPage.BillingReferenceTextBox.SendKeys(wantedEnviroment.BillingReference);
+                clientNeeded = true;
+            }
+            catch { }
+            if (clientNeeded) poc.UpperTabPage.BillingReferenceApplyButton.Click();
+            #endregion
         }
 
         [Test]
@@ -57,7 +68,8 @@ namespace AutomatedTesting.TestConditions.FirmMemos
             #region Gets AccountantFirm Feed Names
             var accountirmFeed = unitOfWork.AccountantFirmFeed.GetList();
             accountirmFeed.RemoveAll(x => x.Name == "?");
-             #endregion
+
+            #endregion
 
             //Takes each lawfirm to make the rssFeed
             foreach (var accountFirm in accountirmFeed)
@@ -81,8 +93,8 @@ namespace AutomatedTesting.TestConditions.FirmMemos
                 bool clicked = false;
                 do
                 {
+                    Thread.Sleep(3000);
                     poc.FirmMemosPage.AddAlertButton.Click();
-                    Thread.Sleep(1000);
                     try { if (poc.FirmMemosAddAlertPopUp.CancelButton.Displayed) clicked = true; }
                     catch { };
                 }
@@ -94,6 +106,7 @@ namespace AutomatedTesting.TestConditions.FirmMemos
                 poc.FirmMemosAddAlertPopUp.RssFeedRadiobutton.WaitUntilClickable(WebDriver.Driver);
                 poc.FirmMemosAddAlertPopUp.RssFeedRadiobutton.Click();
                 ////Copy URL Link
+                Thread.Sleep(3000);
                 unitOfWork.AccountantFirmFeed.UpdateObject(accountFirm.AccountingFirmName, "NewURL", poc.FirmMemosAddAlertPopUp.RSSFeedURLBox.GetAttribute("value"));
                 ////Writes Down Alert Name
                 var alertName = "FM - " + accountFirm.Name;
@@ -104,11 +117,15 @@ namespace AutomatedTesting.TestConditions.FirmMemos
                 #region Cleans Up used Account Firm in Search Filter
                 //Exits Pop Up Canceling the operation
                 poc.FirmMemosAddAlertPopUp.CancelButton.Click();
+                //poc.FirmMemosAddAlertPopUp.SaveButton.Click();
+                Thread.Sleep(3000);
                 poc.FirmMemosPage.CloseFirstTab.Click();
                 //Clears Existing Search
                 for (int i = 0; i <= 3; i++) poc.FirmMemosPage.AccountFirmTextBoxFilter.SendKeys(OpenQA.Selenium.Keys.Backspace);
                 #endregion
             }
+
+
         }
 
         [TearDown]

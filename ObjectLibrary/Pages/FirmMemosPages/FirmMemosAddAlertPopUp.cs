@@ -16,6 +16,9 @@ namespace ObjectLibrary.Pages.FirmMemosPages
             PageFactory.InitElements(WebDriver.Driver, this);
         }
 
+        [FindsBy(How = How.LinkText, Using = "Save Alert")]
+        public IWebElement SaveButton { get; set; }
+
         [FindsBy(How = How.LinkText, Using = "Cancel")]
         public IWebElement CancelButton { get; set; }
 

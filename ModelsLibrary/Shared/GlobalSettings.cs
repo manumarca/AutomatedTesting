@@ -13,5 +13,6 @@ namespace ModelsLibrary.Shared
         public string Enviroment;
         public string User;
         public string Password;
+        public string BillingReference;
     }
 }

@@ -42,11 +42,22 @@ namespace AutomatedTesting.TestConditions.FirmMemos
             BrowserActions.GoToUrl(wantedEnviroment.Enviroment);
             //Logs In 
             login.Login(wantedEnviroment);
+            #region Enter Client Matter if Needed
+            bool clientNeeded = false;
+            try
+            {
+                poc.UpperTabPage.BillingReferenceTextBox.WaitUntilClickable(WebDriver.Driver);
+                poc.UpperTabPage.BillingReferenceTextBox.SendKeys(wantedEnviroment.BillingReference);
+                clientNeeded = true;
+            }
+            catch { }
+            if (clientNeeded) poc.UpperTabPage.BillingReferenceApplyButton.Click();
+            #endregion
         }
 
         [Test]
         public void TopicMemos()
-        {
+            {
 
             #region Gets Topic Feed Names
             //Can Use this 
@@ -61,7 +72,7 @@ namespace AutomatedTesting.TestConditions.FirmMemos
             {
                 #region Writes Topic
                 //Writes Law firm
-                poc.FirmMemosPage.TopicTextBoxFilter.SendKeys(topic.Topic);
+                poc.FirmMemosPage.TopicTextBoxFilter.SendKeys(topic.Memo_Category);
                 BrowserActions.WaitForApplicationLoad(WebDriver.Driver);
                 //Enter to accept law fimr written
                 poc.FirmMemosPage.TopicTextBoxFilter.SendKeys(OpenQA.Selenium.Keys.Tab);
@@ -78,8 +89,8 @@ namespace AutomatedTesting.TestConditions.FirmMemos
                 bool clicked = false;
                 do
                 {
+                    Thread.Sleep(3000);
                     poc.FirmMemosPage.AddAlertButton.Click();
-                    Thread.Sleep(1000);
                     try { if (poc.FirmMemosAddAlertPopUp.CancelButton.Displayed) clicked = true; }
                     catch { };
                 }
@@ -91,9 +102,10 @@ namespace AutomatedTesting.TestConditions.FirmMemos
                 poc.FirmMemosAddAlertPopUp.RssFeedRadiobutton.WaitUntilClickable(WebDriver.Driver);
                 poc.FirmMemosAddAlertPopUp.RssFeedRadiobutton.Click();
                 ////Copy URL Link
+                Thread.Sleep(3000);
                 unitOfWork.TopicFeed.UpdateObject(topic.Topic, "NewURL", poc.FirmMemosAddAlertPopUp.RSSFeedURLBox.GetAttribute("value"));
                 ////Writes Down Alert Name
-                var alertName = "FM - " + topic.Topic;
+                var alertName = "FM - " + topic.Memo_Category;
                 poc.FirmMemosAddAlertPopUp.AlertNameTextBox.SendKeys(alertName);
                 unitOfWork.TopicFeed.UpdateObject(topic.Topic, "AlertName", alertName);
                 #endregion Id Bug
@@ -101,6 +113,8 @@ namespace AutomatedTesting.TestConditions.FirmMemos
                 #region Cleans Up used topic in Search Filter
                 //Exits Pop Up Canceling the operation
                 poc.FirmMemosAddAlertPopUp.CancelButton.Click();
+                //poc.FirmMemosAddAlertPopUp.SaveButton.Click();
+                Thread.Sleep(4000);
                 poc.FirmMemosPage.CloseFirstTab.Click();
                 //Clears Existing Search
                 for (int i = 0; i <= 3; i++) poc.FirmMemosPage.TopicTextBoxFilter.SendKeys(OpenQA.Selenium.Keys.Backspace);
