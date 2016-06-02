@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace ObjectLibrary.Pages.FirmMemosPages
 {
-    public class FirmMemosLawPopup
-    {
+    public class FirmMemosLawPopup : Logger
+    {   
         public FirmMemosLawPopup()
         {
             PageFactory.InitElements(WebDriver.Driver, this);
