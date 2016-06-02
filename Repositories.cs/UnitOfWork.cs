@@ -18,9 +18,22 @@ namespace Repositories.cs
         private IRepository<GlobalSettings> globalSettingsRepository;
         private IRepository<LawFirmFeed> lawFirmFeedRepository;
         private IRepository<AccountantFirmFeed> accountFirmFeedRepository;
+        private IRepository<TopicFeed> topicFeedRepository;
         public UnitOfWork()
         {
             container.LoadConfiguration();
+        }
+
+        public IRepository<TopicFeed> TopicFeed
+        {
+            get
+            {
+                if (this.topicFeedRepository == null)
+                {
+                    this.topicFeedRepository = container.Resolve<IRepository<TopicFeed>>();
+                }
+                return topicFeedRepository;
+            }
         }
 
         public IRepository<AccountantFirmFeed> AccountantFirmFeed

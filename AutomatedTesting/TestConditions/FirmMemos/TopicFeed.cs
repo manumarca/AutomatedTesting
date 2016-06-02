@@ -21,11 +21,12 @@ using System.Collections.Generic;
 
 namespace AutomatedTesting.TestConditions.FirmMemos
 {
-    class AccountantFirms
+    class TopicFeed
     {
         #region Global Instances
         PageObjectCaller poc = new PageObjectCaller();
         UnitOfWork unitOfWork = new UnitOfWork();
+        DataHelper dHelper = new DataHelper();
         #endregion
 
         [SetUp]
@@ -44,30 +45,26 @@ namespace AutomatedTesting.TestConditions.FirmMemos
         }
 
         [Test]
-        public void AccountantFirmMemos()
+        public void TopicMemos()
         {
-            #region Navigate To Firm Memos
-            ////Goes To Firm Memos Page
-            //poc.HomePage.FirmMemosLink.WaitUntilClickable(WebDriver.Driver);
-            //poc.HomePage.FirmMemosLink.Click();
-            ////Waits for ajax loading to finish
-            //BrowserActions.WaitForApplicationLoad(WebDriver.Driver);
+
+            #region Gets Topic Feed Names
+            //Can Use this 
+            var topicFeed = unitOfWork.TopicFeed.GetList();
+            topicFeed.RemoveAll(x => x.Topic == "?");
+            //Or This 
+
             #endregion
 
-            #region Gets AccountantFirm Feed Names
-            var accountirmFeed = unitOfWork.AccountantFirmFeed.GetList();
-            accountirmFeed.RemoveAll(x => x.Name == "?");
-             #endregion
-
-            //Takes each lawfirm to make the rssFeed
-            foreach (var accountFirm in accountirmFeed)
+            //Takes each topic to make the rssFeed
+            foreach (var topic in topicFeed)
             {
-                #region Writes AccountFirm
+                #region Writes Topic
                 //Writes Law firm
-                poc.FirmMemosPage.AccountFirmTextBoxFilter.SendKeys(accountFirm.Name);
+                poc.FirmMemosPage.TopicTextBoxFilter.SendKeys(topic.Topic);
                 BrowserActions.WaitForApplicationLoad(WebDriver.Driver);
                 //Enter to accept law fimr written
-                poc.FirmMemosPage.AccountFirmTextBoxFilter.SendKeys(OpenQA.Selenium.Keys.Tab);
+                poc.FirmMemosPage.TopicTextBoxFilter.SendKeys(OpenQA.Selenium.Keys.Tab);
                 #endregion
 
                 #region Searches
@@ -94,19 +91,19 @@ namespace AutomatedTesting.TestConditions.FirmMemos
                 poc.FirmMemosAddAlertPopUp.RssFeedRadiobutton.WaitUntilClickable(WebDriver.Driver);
                 poc.FirmMemosAddAlertPopUp.RssFeedRadiobutton.Click();
                 ////Copy URL Link
-                unitOfWork.AccountantFirmFeed.UpdateObject(accountFirm.AccountingFirmName, "NewURL", poc.FirmMemosAddAlertPopUp.RSSFeedURLBox.GetAttribute("value"));
+                unitOfWork.TopicFeed.UpdateObject(topic.Topic, "NewURL", poc.FirmMemosAddAlertPopUp.RSSFeedURLBox.GetAttribute("value"));
                 ////Writes Down Alert Name
-                var alertName = "FM - " + accountFirm.Name;
+                var alertName = "FM - " + topic.Topic;
                 poc.FirmMemosAddAlertPopUp.AlertNameTextBox.SendKeys(alertName);
-                unitOfWork.AccountantFirmFeed.UpdateObject(accountFirm.AccountingFirmName, "AlertName", alertName);
+                unitOfWork.TopicFeed.UpdateObject(topic.Topic, "AlertName", alertName);
                 #endregion Id Bug
 
-                #region Cleans Up used Account Firm in Search Filter
+                #region Cleans Up used topic in Search Filter
                 //Exits Pop Up Canceling the operation
                 poc.FirmMemosAddAlertPopUp.CancelButton.Click();
                 poc.FirmMemosPage.CloseFirstTab.Click();
                 //Clears Existing Search
-                for (int i = 0; i <= 3; i++) poc.FirmMemosPage.AccountFirmTextBoxFilter.SendKeys(OpenQA.Selenium.Keys.Backspace);
+                for (int i = 0; i <= 3; i++) poc.FirmMemosPage.TopicTextBoxFilter.SendKeys(OpenQA.Selenium.Keys.Backspace);
                 #endregion
             }
         }
@@ -114,6 +111,7 @@ namespace AutomatedTesting.TestConditions.FirmMemos
         [TearDown]
         public void TestCleanUp()
         {
+            
             //Gets Logout Class
             LogoutActions logOut = new LogoutActions();
             //Logs Out from Application
@@ -123,4 +121,3 @@ namespace AutomatedTesting.TestConditions.FirmMemos
         }
     }
     }
-
