@@ -49,15 +49,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shared\AccountantFirmFeed.cs" />
+    <Compile Include="Pages\FirmMemosPage\AccountantFirmFeed.cs" />
     <Compile Include="Shared\GlobalSettings.cs" />
     <Compile Include="Shared\Resource.cs" />
-    <Compile Include="Shared\LawFirmFeed.cs" />
-    <Compile Include="Shared\TopicFeed.cs" />
+    <Compile Include="Pages\FirmMemosPage\LawFirmFeed.cs" />
+    <Compile Include="Pages\FirmMemosPage\TopicFeed.cs" />
+    <Compile Include="TestCases\LoginTestCases.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

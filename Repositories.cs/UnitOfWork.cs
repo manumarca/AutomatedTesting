@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Repositories.cs.Interfaces;
 using ModelsLibrary.Shared;
+using ModelsLibrary.TestCases;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using System.Configuration;
@@ -19,6 +20,8 @@ namespace Repositories.cs
         private IRepository<LawFirmFeed> lawFirmFeedRepository;
         private IRepository<AccountantFirmFeed> accountFirmFeedRepository;
         private IRepository<TopicFeed> topicFeedRepository;
+        private IRepository<LoginTestCases> loginTestCases;
+        
         public UnitOfWork()
         {
             container.LoadConfiguration();
@@ -80,6 +83,18 @@ namespace Repositories.cs
                     this.lawFirmFeedRepository = container.Resolve<IRepository<LawFirmFeed>>();
                 }
                 return lawFirmFeedRepository;
+            }
+        }
+
+        public IRepository<LoginTestCases> LoginTestCases
+        {
+            get
+            {
+                if (this.loginTestCases == null)
+                {
+                    this.loginTestCases = container.Resolve<IRepository<LoginTestCases>>();
+                }
+                return loginTestCases;
             }
         }
     }

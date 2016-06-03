@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
@@ -19,9 +20,14 @@ namespace AutomatedTesting.InternalActions.Shared
 {
     public static class BrowserActions
     {
-        public static void SetBrowser(string browser)
+        public static void SetCapabilities()
         {
-            switch (browser)
+
+        }
+
+        public static void SetBrowser(ModelsLibrary.Shared.GlobalSettings settings)
+        {
+            switch (settings.Browser)
             {
                 case "Firefox":
                     WebDriver.Driver = new FirefoxDriver();
@@ -51,6 +57,13 @@ namespace AutomatedTesting.InternalActions.Shared
                     WebDriver.Driver = new SafariDriver();
                     Maximize();
                     break;
+                case "RemoteDriver":
+                    DesiredCapabilities capabilities = new DesiredCapabilities(settings.RemoteBrowser,settings.BrowserVersion,Platform.CurrentPlatform);
+                    capabilities.SetCapability("platform", settings.Platform);
+                    capabilities.SetCapability("username",settings.SauceLabUser);
+                    capabilities.SetCapability("accesskey", settings.SauceLabPass);
+                    WebDriver.Driver = new RemoteWebDriver(new Uri("http://ondemand.saucelabs.com:80/wd/hub"), capabilities, TimeSpan.FromSeconds(600));
+                    break;
             }
         }
 
@@ -62,6 +75,7 @@ namespace AutomatedTesting.InternalActions.Shared
         public static void CloseBrowser()
         {
             WebDriver.Driver.Close();
+            WebDriver.Driver.Quit();
         }
 
         public static void GoToUrl(string url)

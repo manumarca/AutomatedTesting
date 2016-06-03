@@ -13,5 +13,6 @@ namespace Repositories.cs.Interfaces
         T GetObject(string row);
         void SetObject(T obj);
         void UpdateObject(string firstColumnName, string columnToBeUpdated, string updatedValue);
+        void SetExcel();
     }
 }

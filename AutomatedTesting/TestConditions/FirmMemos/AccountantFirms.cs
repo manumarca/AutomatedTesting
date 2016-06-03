@@ -34,13 +34,14 @@ namespace AutomatedTesting.TestConditions.FirmMemos
             var enviroment = unitOfWork.EnvironmentRepository.GetList();
             ModelsLibrary.Shared.GlobalSettings wantedEnviroment = enviroment.Find(x => x.Page == "FirmMemos");
             //Set which browser is going to run
-            BrowserActions.SetBrowser(wantedEnviroment.Browser);
+            BrowserActions.SetBrowser(wantedEnviroment);
             //Gets Login Class
             LoginActions login = new LoginActions();
             //Goes to Intelligize
             BrowserActions.GoToUrl(wantedEnviroment.Enviroment);
             //Logs In 
             login.Login(wantedEnviroment);
+
             #region Enter Client Matter if Needed
             bool clientNeeded = false;
             try
@@ -57,18 +58,10 @@ namespace AutomatedTesting.TestConditions.FirmMemos
         [Test]
         public void AccountantFirmMemos()
         {
-            #region Navigate To Firm Memos
-            ////Goes To Firm Memos Page
-            //poc.HomePage.FirmMemosLink.WaitUntilClickable(WebDriver.Driver);
-            //poc.HomePage.FirmMemosLink.Click();
-            ////Waits for ajax loading to finish
-            //BrowserActions.WaitForApplicationLoad(WebDriver.Driver);
-            #endregion
 
             #region Gets AccountantFirm Feed Names
             var accountirmFeed = unitOfWork.AccountantFirmFeed.GetList();
             accountirmFeed.RemoveAll(x => x.Name == "?");
-
             #endregion
 
             //Takes each lawfirm to make the rssFeed
@@ -124,8 +117,6 @@ namespace AutomatedTesting.TestConditions.FirmMemos
                 for (int i = 0; i <= 3; i++) poc.FirmMemosPage.AccountFirmTextBoxFilter.SendKeys(OpenQA.Selenium.Keys.Backspace);
                 #endregion
             }
-
-
         }
 
         [TearDown]
@@ -138,6 +129,7 @@ namespace AutomatedTesting.TestConditions.FirmMemos
             //Closes Browser
             BrowserActions.CloseBrowser();
         }
+
     }
-    }
+}
 
