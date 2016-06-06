@@ -66,7 +66,6 @@ namespace AutomatedTesting.TestConditions.Login
                     }
 
                     #region TestStatusUpdater
-                    var asd = unitOfWork.LoginTestCases;
                     if (testStatus)
                     {
                         //If Steps were correctly done will write the Pass for the case
