@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ObjectLibrary.Pages.FirmMemosPages
 {
-    public class FirmMemosLawPopup : Logger
+    public class FirmMemosLawPopup 
     {   
         public FirmMemosLawPopup()
         {
