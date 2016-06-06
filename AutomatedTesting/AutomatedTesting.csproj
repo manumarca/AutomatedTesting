@@ -133,12 +133,14 @@
     <Compile Include="InternalActions\Shared\LoginActions.cs" />
     <Compile Include="InternalActions\Shared\LogoutActions.cs" />
     <Compile Include="InternalActions\Shared\TestCaseExecutor.cs" />
+    <Compile Include="TestCases\Dictionaries\TestCasesDictionaries.cs" />
     <Compile Include="NukedEnviroment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestConditions\FirmMemos\AccountantFirms.cs" />
-    <Compile Include="TestConditions\FirmMemos\LawFirms.cs" />
-    <Compile Include="TestConditions\FirmMemos\TopicFeed.cs" />
-    <Compile Include="TestConditions\Login\LoginTestCases.cs" />
+    <Compile Include="TestCases\FirmMemos\AccountantFirms.cs" />
+    <Compile Include="TestCases\FirmMemos\LawFirms.cs" />
+    <Compile Include="TestCases\FirmMemos\TopicFeed.cs" />
+    <Compile Include="TestCases\Login\LoginTestCases.cs" />
+    <Compile Include="TestExecutors\LoginTestCasesExecutor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -19,12 +19,12 @@ namespace AutomatedTesting.InternalActions.Shared
 {
     public static class BrowserActions
     {
-
-
         public static void SetBrowser(ModelsLibrary.Shared.GlobalSettings settings)
         {
+            DesiredCapabilities capabilities;
             switch (settings.Browser)
             {
+                #region Local Drivers
                 case "Firefox":
                     WebDriver.Driver = new FirefoxDriver();
                     Maximize();
@@ -53,13 +53,20 @@ namespace AutomatedTesting.InternalActions.Shared
                     WebDriver.Driver = new SafariDriver();
                     Maximize();
                     break;
-                case "RemoteDriver":
-                    DesiredCapabilities capabilities = new DesiredCapabilities(settings.RemoteBrowser,settings.BrowserVersion,Platform.CurrentPlatform);
+                #endregion Local Drivers
+
+                #region Remote Drivers
+                case "SauceLabRemoteDriver":
+                    capabilities = new DesiredCapabilities(settings.RemoteBrowser,settings.BrowserVersion,Platform.CurrentPlatform);
                     capabilities.SetCapability("platform", settings.Platform);
                     capabilities.SetCapability("username",settings.SauceLabUser);
                     capabilities.SetCapability("accesskey", settings.SauceLabPass);
                     WebDriver.Driver = new RemoteWebDriver(new Uri("http://ondemand.saucelabs.com:80/wd/hub"), capabilities, TimeSpan.FromSeconds(600));
                     break;
+                //case "TestingBotRemoteDriver":
+                //    capabilities = SetDesiredCapability(settings.RemoteBrowser);
+                //    break;
+                #endregion Remote Drivers
             }
         }
 
@@ -109,5 +116,28 @@ namespace AutomatedTesting.InternalActions.Shared
                 // do while is going to be repeated until loadingScreen is true and it take less than 10 secs
             } while (isLoading && _timer.Elapsed < TimeSpan.FromSeconds(10));
         }
+
+        //private static DesiredCapabilities SetDesiredCapability(string browser)
+        //{
+        //    DesiredCapabilities cap;
+        //    switch(browser)
+        //    {
+        //        case "Internet Explorer":
+        //            cap = DesiredCapabilities.InternetExplorer();
+        //            break;
+        //        case "Safari":
+        //            cap = DesiredCapabilities.Safari();
+        //            break;
+        //        case "Chrome":
+        //            cap = DesiredCapabilities.Chrome();
+        //            break;
+        //        case "Firefox":
+        //            cap = DesiredCapabilities.Safari();
+        //            break;
+        //        case "":
+
+        //    }
+        //    return cap;
+        //}
     }
 }
