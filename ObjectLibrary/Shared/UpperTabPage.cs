@@ -22,6 +22,12 @@ namespace ObjectLibrary.Shared
         [FindsBy(How = How.XPath, Using = "//li[contains(@class, 'logout-link')]")]
         public IWebElement logoutLink { get; set; }
 
+        [FindsBy(How = How.Id, Using = "combobox-1074-inputEl")]
+        public IWebElement BillingReferenceTextBox { get; set; }
 
+        [FindsBy(How = How.LinkText, Using = "Apply")]
+        public IWebElement BillingReferenceApplyButton { get; set; }
+        
+        
     }
 }

@@ -16,7 +16,7 @@ namespace Repositories.cs.Helpers
         private Excel._Worksheet sheet;
         private Excel.Range range;
         private const string folder = @"C:\TestData\";
-        private const string excelName = "ConsolidatedDataExcel.xlsx";
+        //private const string excelName = "ConsolidatedDataExcel.xlsx";
         #endregion
 
         #region Columns
@@ -107,7 +107,7 @@ namespace Repositories.cs.Helpers
         /// <summary>
         /// Opens the DataExcel in "folder".
         /// </summary>
-        public void Open()
+        public void Open(string excelName)
         {
             if ((excelApp == null) || (!excelApp.Visible))
             {

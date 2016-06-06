@@ -11,15 +11,35 @@ namespace Repositories.cs.Repositories
     public class BaseExcelRepository<T> : IRepository<T> where T : class
     {
         DataHelper dataHelper = new DataHelper();
+        string excelName = "";
+
+        public void SetExcel()
+        {
+            Type type = typeof(T);
+            switch (type.Name)
+            {
+                case "AccountantFirmFeed":
+                case "LawFirmFeed":
+                case "TopicFeed":
+                case "GlobalSettings":
+                    excelName = "Models";
+                    break;
+                case "LoginTestCases":
+                    excelName = "TestCases";
+                    break;
+            }
+        }
+
 
         public List<T> GetList()
         {
-            dataHelper.Open();
+            dataHelper.Open(excelName);
 
             try
             {
                 List<T> list = new List<T>();
                 Type type = typeof(T);
+                
                 var sheetName = type.Name;
                 dataHelper.SelectSheetByName(sheetName);
                 var listPropData = dataHelper.GetFirstRowNamesList();
@@ -45,7 +65,7 @@ namespace Repositories.cs.Repositories
 
         public List<T> GetListByKeyAndValue(string keyName, string keyValue)
         {
-            dataHelper.Open();
+            dataHelper.Open(excelName);
 
             try
             {
@@ -76,7 +96,7 @@ namespace Repositories.cs.Repositories
 
         public T GetObject(string row)
         {
-            dataHelper.Open();
+            dataHelper.Open(excelName);
             try
             {
                 Type type = typeof(T);
@@ -106,7 +126,7 @@ namespace Repositories.cs.Repositories
 
         public void UpdateObject(string firstColumnName, string columnToBeUpdated,string updatedValue)
         {
-            dataHelper.Open();
+            dataHelper.Open(excelName);
             try
             {
                 Type type = typeof(T);
@@ -118,6 +138,7 @@ namespace Repositories.cs.Repositories
                 var cell = column.ToString() + row.ToString();
                 dataHelper.Write(cell, updatedValue);
                 dataHelper.Save();
+                dataHelper.Close();
             }
             catch (Exception e)
             {

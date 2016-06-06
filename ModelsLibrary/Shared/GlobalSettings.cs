@@ -13,5 +13,12 @@ namespace ModelsLibrary.Shared
         public string Enviroment;
         public string User;
         public string Password;
+        public string BillingReference;
+        public string SauceLabUser;
+        public string SauceLabPass;
+        public string RemoteBrowser;
+        public string BrowserVersion;
+        public string Platform;
+        public string ExecutorUri;
     }
 }

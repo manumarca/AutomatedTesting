@@ -24,5 +24,9 @@ namespace ObjectLibrary.Pages.LogIn
 
         [FindsBy(How = How.XPath, Using = ".//*[@id = 'login-controls']/div[4]/div/input")]
         public IWebElement LogInButton { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "html/body/div[1]/form/div/div[2]/div/div[4]/div[3]/div/ul/li")]
+        public IWebElement WrongUserNameorPassWord { get; set; }
+        
     }
 }
