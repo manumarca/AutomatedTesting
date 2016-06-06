@@ -47,8 +47,7 @@ namespace AutomatedTesting
         [Test]
         public void ExecuteTest()
         {
-
-
+            var loginTestCases = unitOfWork.LoginTestCases.GetList();
             #region Old Code
             //#region Navigate To Firm Memos
             ////Goes To Firm Memos Page
@@ -145,6 +144,7 @@ namespace AutomatedTesting
 
         static void Main() { }
              
+        
 
     }
 }

@@ -20,7 +20,6 @@ namespace AutomatedTesting.InternalActions.Shared
     public class LoginActions
     {
         PageObjectCaller poc = new PageObjectCaller();
-        UnitOfWork unitOfWork = new UnitOfWork();
 
         public void Login(ModelsLibrary.Shared.GlobalSettings env)
         {

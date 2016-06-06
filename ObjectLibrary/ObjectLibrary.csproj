@@ -58,6 +58,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PageObjectCaller.cs" />
+    <Compile Include="PageObjectHelper.cs" />
     <Compile Include="Pages\FirmMemosPages\FirmMemosAddAlertPopUp.cs" />
     <Compile Include="Pages\FirmMemosPages\FirmMemosPage.cs" />
     <Compile Include="Pages\FirmMemosPages\FirmMemosLawPopup.cs" />
