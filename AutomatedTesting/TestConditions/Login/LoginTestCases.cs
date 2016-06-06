@@ -66,6 +66,8 @@ namespace AutomatedTesting.TestConditions.Login
                     }
 
                     #region TestStatusUpdater
+                    var asd = unitOfWork.LoginTestCases;
+                    TestCaseExecutor.Updater(testStatus,unitOfWork.LoginTestCases);
                     if (testStatus)
                     {
                         //If Steps were correctly done will write the Pass for the case
@@ -83,21 +85,51 @@ namespace AutomatedTesting.TestConditions.Login
                         WebDriver.Driver.Quit();
                     }
                     #endregion TestStatusUpdater
+
                 }
             }
 
         }
+
         public void LoginWithIncorrectUserName()
         {
-
+            //Gets The Data for this TestCase
+            unitOfWork.EnvironmentRepository.SetExcel();
+            var enviroment = unitOfWork.EnvironmentRepository.GetList();
+            var wantedEnviroment = enviroment.Find(x => x.Page == "IncorrectUsername");
+            //Set which browser is going to run
+            BrowserActions.SetBrowser(wantedEnviroment);
+            //Gets Login Class
+            LoginActions login = new LoginActions();
+            //Goes to Intelligize
+            BrowserActions.GoToUrl(wantedEnviroment.Enviroment);
+            //Logs In 
+            login.Login(wantedEnviroment);
+            //Checks that its Logged in
+            Assert.IsTrue(poc.LoginPage.WrongUserNameorPassWord.Enabled);
         }
 
         public void LoginWithIncorrectPassword()
         {
-
+            //Gets The Data for this TestCase
+            unitOfWork.EnvironmentRepository.SetExcel();
+            var enviroment = unitOfWork.EnvironmentRepository.GetList();
+            var wantedEnviroment = enviroment.Find(x => x.Page == "IncorrectPassword");
+            //Set which browser is going to run
+            BrowserActions.SetBrowser(wantedEnviroment);
+            //Gets Login Class
+            LoginActions login = new LoginActions();
+            //Goes to Intelligize
+            BrowserActions.GoToUrl(wantedEnviroment.Enviroment);
+            //Logs In 
+            login.Login(wantedEnviroment);
+            //Checks that its Logged in
+            Assert.IsTrue(poc.LoginPage.WrongUserNameorPassWord.Enabled);
         }
+
         public void CorrectLogin()
         {
+            //Gets The Data for this TestCase
             unitOfWork.EnvironmentRepository.SetExcel();
             var enviroment = unitOfWork.EnvironmentRepository.GetList();
             var wantedEnviroment = enviroment.Find(x => x.Page == "Default");
@@ -111,24 +143,21 @@ namespace AutomatedTesting.TestConditions.Login
             login.Login(wantedEnviroment);
             //Checks that its Logged in
             Assert.IsTrue(poc.HomePage.FirmMemosLink.Enabled);
-            LogOut();
-
-        }
-
-        public void LogOut()
-        {
             //Gets Logout Class
             LogoutActions logOut = new LogoutActions();
             //Logs Out from Application
             logOut.LogOut();
             //Closes Browser
             BrowserActions.CloseBrowser();
+
         }
+
         [TearDown]
         public void TestCleanUp()
         {
   
         }
+
     }
 
     

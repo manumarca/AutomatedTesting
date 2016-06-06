@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Repositories.cs.Interfaces;
+
 
 namespace AutomatedTesting.InternalActions.Shared
 {
     public static class TestCaseExecutor
     {
-        public static bool Executor(Action method)
+               public static bool Executor(Action method)
         {
             bool testStatus = false;
             try
@@ -25,7 +27,5 @@ namespace AutomatedTesting.InternalActions.Shared
             }
             return testStatus;
         }
-
-
     }
 }

@@ -20,10 +20,7 @@ namespace AutomatedTesting.InternalActions.Shared
 {
     public static class BrowserActions
     {
-        public static void SetCapabilities()
-        {
 
-        }
 
         public static void SetBrowser(ModelsLibrary.Shared.GlobalSettings settings)
         {
