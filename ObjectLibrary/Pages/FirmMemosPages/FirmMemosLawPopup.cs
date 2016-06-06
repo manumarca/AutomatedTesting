@@ -46,14 +46,12 @@ namespace ObjectLibrary.Pages.FirmMemosPages
 
             for (;;trStartId++)
             {
-                Log.Info("Addings the cells to the list");
-
                 try
                 {
-                    cells.Add(LawFirmListFilter.FindElement(By.Id(trId + trStartId)).Text);
-                    trActualId++;
-                    Actions act = new Actions(WebDriver.Driver);
-                    act.MoveToElement(LawFirmListFilter.FindElement(By.Id(trId + (trStartId)))).Build().Perform();
+                    //cells.Add(LawFirmListFilter.FindElement(By.Id(trId + trStartId)).Text);
+                    //trActualId++;
+                    //Actions act = new Actions(WebDriver.Driver);
+                    //act.MoveToElement(LawFirmListFilter.FindElement(By.Id(trId + (trStartId)))).Build().Perform();
                 }
                 catch (Exception)
                 {
