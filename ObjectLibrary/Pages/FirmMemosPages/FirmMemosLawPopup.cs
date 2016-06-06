@@ -1,5 +1,4 @@
-﻿using ObjectLibrary.Logger;
-using ObjectLibrary.Shared;
+﻿using ObjectLibrary.Shared;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;

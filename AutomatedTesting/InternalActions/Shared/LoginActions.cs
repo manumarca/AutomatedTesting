@@ -13,6 +13,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using Repositories.cs;
 using Repositories.cs.Helpers;
+using Log;
 
 
 namespace AutomatedTesting.InternalActions.Shared
@@ -24,8 +25,10 @@ namespace AutomatedTesting.InternalActions.Shared
 
         public void Login(ModelsLibrary.Shared.GlobalSettings env)
         {
+            Logger.Info(String.Format("Enter user\nUsername: {0} - Password: {1}", env.User, env.Password));
             EnterUser(env);
             EnterPassword(env);
+            Logger.Info("Click on Sign In");
             ClickOnSignIn();
         }
         

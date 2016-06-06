@@ -145,6 +145,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{6efbfae6-cb3c-4ac6-88da-ee28d7123b60}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModelsLibrary\ModelsLibrary.csproj">
       <Project>{daa29156-ca55-45d6-8e75-9f064f04f9b9}</Project>
       <Name>ModelsLibrary</Name>

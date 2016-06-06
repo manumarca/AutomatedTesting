@@ -18,6 +18,7 @@ using OpenQA.Selenium.Remote;
 using Repositories.cs;
 using Repositories.cs.Helpers;
 using System.Collections.Generic;
+using Log;
 
 namespace AutomatedTesting
 {
@@ -27,6 +28,8 @@ namespace AutomatedTesting
         PageObjectCaller poc = new PageObjectCaller();
         UnitOfWork unitOfWork = new UnitOfWork();
         #endregion
+
+        private string _context;
 
         [SetUp]
         public void Initialize()

@@ -51,12 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logger\FileManager.cs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="Logger\Log.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="PageObjectCaller.cs" />
     <Compile Include="Pages\FirmMemosPages\FirmMemosAddAlertPopUp.cs" />
     <Compile Include="Pages\FirmMemosPages\FirmMemosPage.cs" />
