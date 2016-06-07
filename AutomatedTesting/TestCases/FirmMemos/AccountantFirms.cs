@@ -34,7 +34,7 @@ namespace AutomatedTesting.TestConditions.FirmMemos
             var enviroment = unitOfWork.EnvironmentRepository.GetList();
             ModelsLibrary.Shared.GlobalSettings wantedEnviroment = enviroment.Find(x => x.Page == "FirmMemos");
             //Set which browser is going to run
-            BrowserActions.SetBrowser(wantedEnviroment);
+            BrowserActions.SetBrowser(wantedEnviroment.Browser);
             //Gets Login Class
             LoginActions login = new LoginActions();
             //Goes to Intelligize
